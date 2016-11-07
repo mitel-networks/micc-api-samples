@@ -41,8 +41,8 @@ function populateQueueStats(queueRow) {
                     .text(queueData.mediaType);
                 query.find('td.waitingConversations')
                     .text(queueData.waitingConversations);
-                query.find('td.longestWaitingConversationsDuration')
-                    .text(queueData.longestWaitingConversationsDuration);
+                query.find('td.longestWaitingConversationDuration')
+                    .text(queueData.longestWaitingConversationDuration);
                 query.find('td.estimatedWaitTimeForNewConversations')
                     .text(queueData.estimatedWaitTimeForNewConversations);
                 query.find('td.serviceLevelPercentageToday')
@@ -63,7 +63,7 @@ function addQueueRow(queueId) {
             <td class="reporting">${queueId}</td>
             <td class="mediaType">?</td>
             <td class="waitingConversations">?</td>
-            <td class="longestWaitingConversationsDuration">?</td>
+            <td class="longestWaitingConversationDuration">?</td>
             <td class="estimatedWaitTimeForNewConversations">?</td>
             <td class="serviceLevelPercentageToday">?</td>
             <td class="offeredConversationsToday">?</td>
