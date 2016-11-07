@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="js/micc.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="w3-container w3-blue">
+        <h1 class="w3-text-shadow">MiCC QueueNow stats Demo</h1>
+    </div>
+    <br />
+    <div class="w3-container w3-card-4">
+        <p>
+            <label>User name</label>
+            <input class="w3-input w3-border w3-round" type="text" id="username"></input>
+        </p>
+        <p>
+            <label>Password</label>
+            <input class="w3-input w3-border w3-round" type="password" id="password"></input>
+        </p>
+        <p>
+            <button class="w3-btn w3-blue" onclick="login();">Login</button>
+        </p>
+    </div>
+    <div class="w3-container w3-card-4">
+        <p>
+            <label>Refresh interval (s)</label>
+            <input class="w3-input w3-border w3-round" type="number" min="1" id="refreshInterval"></input>
+        </p>
+        <p>
+            <button class="w3-btn w3-blue" onclick="setRefreshInterval();">Start</button>
+        </p>
+    </div>
+    <div class="w3-container w3-card-4">
+        <p>
+            <label>Queue id<label>
+            <input class="" type="text" id="queueId"></input>
+            <button class="w3-btn w3-blue" onclick="addQueueRow($('#queueId').val());">Add queue</button>
+        <p>
+        <table class="w3-table-all w3-centered" id="queueStatsTable">
+            <thead>
+                <tr class="w3-blue">
+                    <th></th>
+                    <th>name</th>
+                    <th>reporting</th>
+                    <th>media</th>
+                    <th>waiting</th>
+                    <th>longestWaiting</th>
+                    <th>EWT</th>
+                    <th>SL %</th>
+                    <th>offered</th>
+                    <th>answered</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
