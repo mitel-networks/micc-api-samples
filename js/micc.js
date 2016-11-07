@@ -27,10 +27,10 @@ function Micc() {
             console.log('Will not fetch because no queue id given.');
         } else {
             console.log('Fetching data for queue id:', queueId);
-/*
+
             $.ajax({
                 type: 'GET',
-                url: `${miccSdkBase},/queues/${queueId}/state`,
+                url: `${miccSdkBase}/queues/${queueId}/state`,
                 headers: {
                     Authorization: `Bearer ${bearerToken}`
                 },
@@ -38,18 +38,6 @@ function Micc() {
             .done(function (queueData) {
                 console.log('Received response:  %j', queueData);
                 receiveStats(queueData);
-            });
-*/
-            receiveStats({
-                name:'test queue',
-                reporting:queueId,
-                mediaType:'open media',
-                waitingConversations: 1,
-                longestWaitingConversationsDuration: '00:31:23',
-                estimatedWaitTimeForNewConversations: '00:10:23',
-                serviceLevelPercentageToday: 63,
-                offeredConversationsToday: 23,
-                answeredConversationsToday: 22,
             });
         }
     };
