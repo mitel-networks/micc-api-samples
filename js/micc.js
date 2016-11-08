@@ -1,7 +1,7 @@
 function Micc() {
     var miccServerBase = 'http://127.0.0.1';
-    var miccSdkBase = miccServerBase + '/miccsdk/api/v1';
-    var miccAuthBase = miccServerBase + '/authorizationserver';
+    var miccSdkBase = `${miccServerBase}/miccsdk/api/v1`;
+    var miccAuthBase = `${miccServerBase}/authorizationserver`;
     var bearerToken = '';
 
     this.login = function (username, password) {
@@ -10,14 +10,14 @@ function Micc() {
 
         $.ajax({
             type: "POST",
-            url: miccAuthBase + "/token",
+            url: `${miccAuthBase}/token`,
             data: data,
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
         })
         .done(function (data) {
-            console.log('Login success.  Received data %j', data);
+            console.log('Login success.  Received data:  ', data);
             bearerToken = data.access_token;
         });
     };
@@ -36,7 +36,7 @@ function Micc() {
                 },
             })
             .done(function (queueData) {
-                console.log('Received response:  %j', queueData);
+                console.log('Received response:  ', queueData);
                 receiveStats(queueData);
             });
         }

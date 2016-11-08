@@ -5,7 +5,7 @@ function setRefreshInterval() {
     clearInterval(timerInterval);
     var refreshInterval = $('#refreshInterval').val() * 1000;
     if(refreshInterval < 1) {
-        console.warn('Refusing interval below 1:  [%s]', refreshInterval);
+        console.info('Stopping refresh', refreshInterval);
     } else {
         timerInterval = setInterval(function () {
             console.info('Refreshing queue info');
@@ -24,15 +24,16 @@ function login() {
 }
 
 function populateQueueStats(queueRow) {
-    var queueId = $(queueRow).find('td.reporting').text();
+    var queueId = $(queueRow).attr('id');
 
     micc.fetchQueueStats(queueId, function(queueData) {
-        var matchingQueueRows = $(`#${queueId}`);
+        var matchingQueueRows = $(`[id='${queueId}']`);
         if(!matchingQueueRows) {
             console.warn('No rows found for id %s', queueId);
         } else {
             matchingQueueRows.each(function(i, queueRow){
                 var query = $(queueRow);
+                query.attr('id', queueData.id);
                 query.find('td.name')
                     .text(queueData.name);
                 query.find('td.reporting')
@@ -60,7 +61,7 @@ function addQueueRow(queueId) {
     var queueRow = $(`<tr id="${queueId}" class="queueRow">
             <td><button class="w3-btn w3-round-xxlarge w3-tiny w3-blue" onclick="deleteRow(this);">X</button></td>
             <td class="name">?</td>
-            <td class="reporting">${queueId}</td>
+            <td class="reporting">?</td>
             <td class="mediaType">?</td>
             <td class="waitingConversations">?</td>
             <td class="longestWaitingConversationDuration">?</td>
