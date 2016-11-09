@@ -22,23 +22,37 @@ function Micc(serverAddress) {
         });
     };
 
-    this.fetchQueueStats = function (queueId, receiveStats) {
+    this.fetchQueueStats = function (queueId, receiveQueueStats) {
         if(!queueId) {
             console.log('Will not fetch because no queue id given.');
         } else {
-            console.log('Fetching data for queue id:', queueId);
-
-            $.ajax({
-                type: 'GET',
-                url: `${miccSdkBase}/queues/${queueId}/state`,
-                headers: {
-                    Authorization: `Bearer ${bearerToken}`
-                },
-            })
-            .done(function (queueData) {
-                console.log('Received response:  ', queueData);
-                receiveStats(queueData);
-            });
+            this.getRequest(`queues/${queueId}/state`, receiveQueueStats);
         }
     };
+
+    this.getRequest = function(apiSubUrl, processResponse) {
+        this.makeAjaxRequest(apiSubUrl, 'GET', null, processResponse);
+    }
+
+    this.postRequest = function(apiSubUrl, body, processResponse) {
+        this.makeAjaxRequest(url, 'POST', body, processResponse);
+    }
+
+    this.makeAjaxRequest = function(apiSubUrl, method, body, processResponse) {
+        var url = `${miccSdkBase}/${apiSubUrl}`;
+        console.log(`Processing ${method} request to ${url}`);
+
+        $.ajax({
+            type: method,
+            url: url,
+            headers: {
+                Authorization: `Bearer ${bearerToken}`
+            },
+            data: body
+        })
+        .done(function (receivedData) {
+            console.log('Received response:  ', receivedData);
+            processResponse(receivedData);
+        });
+    }
 };
