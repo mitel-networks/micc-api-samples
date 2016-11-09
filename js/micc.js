@@ -35,7 +35,7 @@ function Micc(serverAddress) {
     }
 
     this.postRequest = function(apiSubUrl, body, processResponse) {
-        this.makeAjaxRequest(url, 'POST', body, processResponse);
+        this.makeAjaxRequest(apiSubUrl, 'POST', body, processResponse);
     }
 
     this.makeAjaxRequest = function(apiSubUrl, method, body, processResponse) {
