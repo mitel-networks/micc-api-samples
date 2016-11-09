@@ -45,6 +45,7 @@ function Micc(serverAddress) {
         $.ajax({
             type: method,
             url: url,
+            'content-type':'application/json',
             headers: {
                 Authorization: `Bearer ${bearerToken}`
             },
