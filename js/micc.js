@@ -1,11 +1,11 @@
-function Micc() {
-    var miccServerBase = 'http://127.0.0.1';
+function Micc(serverAddress) {
+    var miccServerBase = `http://${serverAddress}`;
     var miccSdkBase = `${miccServerBase}/miccsdk/api/v1`;
     var miccAuthBase = `${miccServerBase}/authorizationserver`;
     var bearerToken = '';
 
     this.login = function (username, password) {
-        console.log('Attempting login with %s/%s', username, password);
+        console.log('Attempting to login user [%s] to server [%s]', username, miccAuthBase);
         var data = `grant_type=password&username=${username}&password=${password}`;
 
         $.ajax({

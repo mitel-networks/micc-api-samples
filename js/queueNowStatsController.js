@@ -1,6 +1,24 @@
-var micc = new Micc();
-var timerInterval;
+var micc = new Micc('localhost');
 
+function toggleAccordion(elementId) {
+    var accordian = document.getElementById(elementId);
+    const showClass = ' w3-show';
+    if(accordian.className.indexOf(showClass) == -1) {
+        accordian.className += showClass;
+    } else {
+        accordian.className = accordian.className.replace(showClass, '');
+    }
+}
+
+function login() {
+    micc = new Micc($('#miccServer').val());
+    micc.login(
+        $('#username').val(),
+        $('#password').val()
+    );
+}
+
+var timerInterval;
 function setRefreshInterval() {
     clearInterval(timerInterval);
     var refreshInterval = $('#refreshInterval').val() * 1000;
@@ -14,13 +32,6 @@ function setRefreshInterval() {
             });
         }, refreshInterval);
     }
-}
-
-function login() {
-    micc.login(
-        $('#username').val(),
-        $('#password').val()
-    );
 }
 
 function populateQueueStats(queueRow) {

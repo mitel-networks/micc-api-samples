@@ -12,39 +12,50 @@
     <div class="w3-container w3-blue">
         <h1 class="w3-text-shadow">MiCC QueueNow stats Demo</h1>
     </div>
-    <div class="w3-row w3-card-4 w3-container">
-        <div class="w3-col m6">
-            <p>
-                <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
-            </p>
-            <p>
-                <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
-            </p>
-            <p>
-                <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
-            </p>
-        </div>
-        <div class="w3-col m6">
-            <p>
-                <div class="w3-row-padding">
-                    <div class="w3-col m6">
-                        <input class="w3-input w3-border w3-round" type="number" min="1" id="refreshInterval" placeholder="Refresh interval (s)"></input>
-                    </div>
-                    <div class="w3-col m6">
-                        <button class="w3-btn-block w3-blue w3-round" onclick="setRefreshInterval();">Start</button>
-                    </div>
+    <div class="w3-accordion w3-card-4">
+        <div class="w3-row">
+            <div class="w3-col m6">
+                <button class="w3-btn-block w3-teal" onclick="toggleAccordion('login-accordian');">Show login</button>
+                <div id="login-accordian" class="w3-accordion-content w3-container">
+                    <p>
+                        <input class="w3-input w3-border w3-round" type="text" id="miccServer" placeholder="Server address"></input>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
+                    </p>
+                    <p>
+                        <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
+                    </p>
                 </div>
-            </p>
-            <p>
-                <div class="w3-row-padding">
-                    <div class="w3-col m6">
-                        <input class="w3-input w3-border w3-round" type="text" id="queueId" placeholder="ID, reporting, or name"></input>
-                    </div>
-                    <div class="w3-col m6">
-                        <button class="w3-btn-block w3-blue w3-round" onclick="addQueueRow($('#queueId').val());">Add queue</button>
-                    </div>
+            </div>
+            <div class="w3-col m6">
+                <button class="w3-btn-block w3-indigo" onclick="toggleAccordion('misc-accordian');">Show misc</button>
+                <div id="misc-accordian" class="w3-accordion-content w3-container">
+                    <p>
+                        <div class="w3-row-padding">
+                            <div class="w3-col m6">
+                                <input class="w3-input w3-border w3-round" type="number" min="1" id="refreshInterval" placeholder="Refresh interval (s)"></input>
+                            </div>
+                            <div class="w3-col m6">
+                                <button class="w3-btn-block w3-blue w3-round" onclick="setRefreshInterval();">Start</button>
+                            </div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="w3-row-padding">
+                            <div class="w3-col m6">
+                                <input class="w3-input w3-border w3-round" type="text" id="queueId" placeholder="ID, reporting, or name"></input>
+                            </div>
+                            <div class="w3-col m6">
+                                <button class="w3-btn-block w3-blue w3-round" onclick="addQueueRow($('#queueId').val());">Add queue</button>
+                            </div>
+                        </div>
+                    </p>
                 </div>
-            </p>
+            </div>
         </div>
     </div>
     <div class="w3-panel w3-card-4">
