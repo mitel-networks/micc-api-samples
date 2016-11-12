@@ -37,7 +37,7 @@ function setRefreshInterval() {
 function populateQueueStats(queueRow) {
     var queueId = $(queueRow).attr('id');
 
-    micc.fetchQueueStats(queueId, function(queueData) {
+    micc.getQueueStats(queueId, function(queueData) {
         var matchingQueueRows = $(`[id='${queueId}']`);
         if(!matchingQueueRows) {
             console.warn('No rows found for id %s', queueId);
