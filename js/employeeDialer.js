@@ -14,10 +14,9 @@ function login() {
     micc = new Micc($('#miccServer').val());
     micc.login(
         $('#username').val(),
-        $('#password').val()
+        $('#password').val(),
+        populateEmployeeInfo
     );
-
-    populateEmployeeInfo();
 }
 
 function populateEmployeeInfo() {
@@ -28,13 +27,14 @@ function populateEmployeeInfo() {
         var voiceDevices = employeeStats.presence.voice;
         console.log('Voice devices:  ', voiceDevices);
 
-        let voiceDeviceSelector = $('#voiceDeviceSelector');
-        voiceDeviceSelector.empty();
-        $.each(voiceDevices, function(voiceDevice){
-            voiceDeviceSelector
-                .append($('$<option>', {value : voiceDevice.reporting}))
-                .text(voiceDevice.reporting);
-        });
+        $('#voiceDeviceSelector').empty();
+        for(var voiceDevice of voiceDevices) {
+            $('#voiceDeviceSelector')
+                .append($('<option>', {
+                    value : voiceDevice.reporting,
+                    text: voiceDevice.reporting
+                }));
+        }
     });
 }
 
@@ -42,11 +42,11 @@ function dial() {
     var toNumber = $('#toNumber').val();
     var fromNumber = $('#voiceDeviceSelector').val();
 
-    micc.postEmployeeConversation('me', {
-        type:"Voice",
-        from:fromNumber,
-        toNumber:toNumber
-    }, function(responseData) {
+    micc.postEmployeeConversation('me', `{
+        "type":"Voice",
+        "from":"${fromNumber}",
+        "to":"${toNumber}"
+    }`, function(responseData) {
         console.log('Response from POST conversation:  ', responseData);
     });
 }

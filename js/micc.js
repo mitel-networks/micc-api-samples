@@ -4,7 +4,7 @@ function Micc(serverAddress) {
     var miccAuthBase = `${miccServerBase}/authorizationserver`;
     var bearerToken = '';
 
-    this.login = function (username, password) {
+    this.login = function (username, password, processResponse) {
         console.log('Attempting to login user [%s] to server [%s]', username, miccAuthBase);
         var data = `grant_type=password&username=${username}&password=${password}`;
 
@@ -19,6 +19,9 @@ function Micc(serverAddress) {
         .done(function (data) {
             console.log('Login success.  Received data:  ', data);
             bearerToken = data.access_token;
+            if(processResponse) {
+                processResponse(data);
+            }
         });
     };
 
