@@ -22,13 +22,29 @@ function Micc(serverAddress) {
         });
     };
 
-    this.fetchQueueStats = function (queueId, receiveQueueStats) {
+    this.getEmployeeStats = function (employeeId, receiveEmployeeStats) {
+        if(!employeeId) {
+            console.log('Will not fetch because no employee id given.');
+        } else {
+            this.getRequest(`employees/${employeeId}/state`, receiveEmployeeStats);
+        }
+    };
+
+    this.getQueueStats = function (queueId, receiveQueueStats) {
         if(!queueId) {
             console.log('Will not fetch because no queue id given.');
         } else {
             this.getRequest(`queues/${queueId}/state`, receiveQueueStats);
         }
     };
+
+    this.postEmployeeConversation = function(employeeId, body, processResponse) {
+        if(!employeeId) {
+            console.log('Will not fetch because no employee id given.');
+        } else {
+            this.postRequest(`employees/${employeeId}/conversations`, body, processResponse);
+        }
+    }
 
     this.getRequest = function(apiSubUrl, processResponse) {
         this.makeAjaxRequest(apiSubUrl, 'GET', null, processResponse);

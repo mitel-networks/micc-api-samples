@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="js/micc.js"></script>
+    <script src="js/employeeDialer.js"></script>
+</head>
+
+<body>
+    <div class="w3-container w3-blue">
+        <h1 class="w3-text-shadow">MiCC employee dialer demo</h1>
+    </div>
+    <div class="w3-accordion w3-card-4">
+        <button class="w3-btn-block w3-blue w3-topbar w3-border-white" onclick="toggleAccordion('login-accordian');">Show login</button>
+        <div id="login-accordian" class="w3-accordion-content w3-container">
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="miccServer" placeholder="Server address"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
+            </p>
+            <p>
+                <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
+            </p>
+        </div>
+    </div>
+    <div class="w3-panel w3-card-4 w3-row">
+        <div class="w3-col m4">
+            <h3>Employee info</h3>
+            <p>
+                <label id="employeeName">Last, First</label>
+                <br />
+                <label id="employeeReporting">Reporting</label>
+            </p>
+        </div>
+        <div class="w3-col m4">
+            <h3>From device</h3>
+            <select id="voiceDeviceSelector">
+                <option value="agent1">Agent 1</option>
+                <option value="ext1">Base extension</option>
+                <option value="ext2">HD extension</option>
+            </select>
+        </div>
+        <div class="w3-col m4">
+            <h3>To number</h3>
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="toNumber" placeholder="number to dial"></input>
+                <button class="w3-btn-block w3-blue w3-round" onclick="dial();">Dial</button>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
