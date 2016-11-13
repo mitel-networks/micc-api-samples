@@ -1,5 +1,5 @@
 # micc-api-samples
-Repository for creating sample usages of the MiCC API.
+Repository for creating sample usages of the [MiCC](http://www.mitel.com/products/collaboration-software/micontact-center-business) API.
 
 These samples should be used with the following mindset:
 * that they can and will change without warning.
