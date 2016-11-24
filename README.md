@@ -28,7 +28,7 @@ Basic demo of outbound dialing.
 * Write a number to dial and hit the dial button.
 * The from device should dial accordingly.
 
-## realtimeEmployeeInbox.html - STARTING STUB, NON-FUNCTIONAL
+## realtimeEmployeeInbox.html
 Basic demo of using signalr for listening to employee inbox updates
 
 Prereqs:
@@ -38,7 +38,6 @@ Prereqs:
 Demo notes:
 * All errors are written to the console.
 * Login first with username and password.
-* Post login should display any current employee inbox conversations.
 * New conversations should appear in the grid.
 * Updates should update the conversations in the grid.
 * Removes (end, transfer, etc) should disappear from the grid.

@@ -36,7 +36,7 @@ function connectToEmployeeHub(data) {
             console.info(`Connection established with ID=${connection.id}`);
 
             var hub = connection.createHubProxy('employeeHub');
-            hub.invoke('addConversationMonitor');
+            hub.invoke('addSelfMonitor');
             hub.on('employeeConversationChanged', onEmployeeConversationChanged);
             hub.on('employeeConversationRemoved', onEmployeeConversationRemoved);
         })
@@ -45,53 +45,58 @@ function connectToEmployeeHub(data) {
         });
 }
 
-function onEmployeeConversationChanged(conversationData) {
-    console.info('Received employeeConversationChanged:  ', conversationData);
+function onEmployeeConversationChanged(conversations) {
+    console.info('Received employeeConversationChanged:  ', conversations);
 
-    var matchingQueueRows = $(`[id='${conversationData.conversationId}']`);
-    if(!matchingQueueRows) {
-        matchingQueueRows = addConversationRow(conversationData.conversationId);
-    } else {
-        matchingQueueRows.each(function(i, conversationRow){
-            var query = $(conversationRow);
-            query.find('td.mediaType')
-                .text(conversationData.mediaType);
-            query.find('td.conversationState')
-                .text(conversationRow.conversationState);
-            query.find('td.fromAddress')
-                .text(conversationRow.fromAddress);
-            query.find('td.fromName')
-                .text(conversationRow.fromName);
-            query.find('td.toAddress')
-                .text(conversationData.toAddress);
-            query.find('td.toName')
-                .text(conversationData.toName);
-            query.find('td.subject')
-                .text(conversationData.subject);
-            query.find('td.conversationType')
-                .text(conversationData.conversationType);
-            query.find('td.conversationDirection')
-                .text(conversationData.conversationDirection);
-        });
+    for (var conversation of conversations) {
+        updateEmployeeConversationRow(conversation);
     }
 }
 
-function onEmployeeConversationRemoved(conversationId) {
-    console.info('Received employeeConversationRemoved:  ', conversationId);
-    deleteRow(conversationId);
+function updateEmployeeConversationRow(conversationData) {
+    var matchingQueueRows = $(`[id='${conversationData.conversationId}']`);
+    if(matchingQueueRows.length == 0) {
+        matchingQueueRows = addConversationRow(conversationData.conversationId);
+    }
+
+    matchingQueueRows.each(function(i, conversationRow){
+        var query = $(conversationRow);
+        query.find('td.mediaType')
+            .text(conversationData.mediaType);
+        query.find('td.conversationDirection')
+            .text(conversationData.direction);
+        query.find('td.conversationState')
+            .text(conversationData.conversationState);
+        query.find('td.fromName')
+            .text(conversationData.fromName);
+        query.find('td.fromAddress')
+            .text(conversationData.fromAddress);
+        query.find('td.toName')
+            .text(conversationData.toName);
+        query.find('td.toAddress')
+            .text(conversationData.toAddress);
+        query.find('td.subject')
+            .text(conversationData.subject);
+    });
+}
+
+function onEmployeeConversationRemoved(conversationIds) {
+    console.info('Received employeeConversationRemoved:  ', conversationIds);
+    for (var conversationId of conversationIds) {
+        deleteRow(conversationId);
+    }
 }
 
 function addConversationRow(conversationId) {
     return $(`<tr id="${conversationId}" class="conversationRow">
             <td class="mediaType">?</td>
-            <td class="conversationState">?</td>
-            <td class="fromAddress">?</td>
-            <td class="fromName">?</td>
-            <td class="toAddress">?</td>
-            <td class="toName">?</td>
-            <td class="subject">?</td>
-            <td class="conversationType">?</td>
             <td class="conversationDirection">?</td>
+            <td class="conversationState">?</td>
+            <td class="fromName">?</td>
+            <td class="fromAddress">?</td>
+            <td class="toName">?</td>
+            <td class="toAddress">?</td>
+            <td class="subject">?</td>
         </tr>`)
         .appendTo('#conversationsTable > tbody:last-child');
 }
