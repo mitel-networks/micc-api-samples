@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/mitel-networks/micc-api-samples#readme",
   "dependencies": {
-    "ms-signalr-client": "^2.2.5"
+    "ms-signalr": "^0.0.2"
   }
 }

@@ -20,6 +20,7 @@ function Micc(serverAddress) {
             console.log('Login success.  Received data:  ', data);
             bearerToken = data.access_token;
             if(processResponse) {
+                data.miccServer = miccServerBase;
                 processResponse(data);
             }
         });

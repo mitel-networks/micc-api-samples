@@ -20,15 +20,15 @@ function login() {
 }
 
 function connectToEmployeeHub(data) {
-    var connection = $.hubConnection(`http://${miccServer}/miccsdk/`, {
-         qs: `sessionid=Bearer ${token}`
+    var connection = $.hubConnection(`${data.miccServer}/miccsdk/`, {
+         qs: `sessionid=Bearer ${data.access_token}`
     });
     connection.logging = true;
     connection.error(function(error) {
         console.error('Connection error:  ', error);
     });
     connection.stateChanged(function(state) {
-        console.error('Connection state changed:  ', state);
+        console.info('Connection state changed:  ', state);
     });
 
     connection.start()
