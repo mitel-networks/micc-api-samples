@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/ms-signalr-client/jquery.signalR.js"></script>
+    <script src="js/micc.js"></script>
+    <script src="js/realtimeEmployeeInbox.js"></script>
+</head>
+
+<body>
+    <div class="w3-container w3-blue">
+        <h1 class="w3-text-shadow">MiCC employee inbox demo</h1>
+    </div>
+    <div class="w3-accordion w3-card-4">
+        <button class="w3-btn-block w3-blue w3-topbar w3-border-white" onclick="toggleAccordion('login-accordian');">Show login</button>
+        <div id="login-accordian" class="w3-accordion-content w3-container">
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="miccServer" placeholder="Server address"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
+            </p>
+            <p>
+                <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
+            </p>
+        </div>
+    </div>
+    <div class="w3-panel w3-card-4">
+        <table class="w3-table-all w3-centered" id="conversationsTable">
+            <thead>
+                <tr class="w3-blue">
+                    <th>Conversation type</th>
+                    <th>Conversation state</th>
+                    <th>From address</th>
+                    <th>From name</th>
+                    <th>To address</th>
+                    <th>To name</th>
+                    <th>Subject</th>
+                    <th>Media type</th>
+                    <th>Conversation direction</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
