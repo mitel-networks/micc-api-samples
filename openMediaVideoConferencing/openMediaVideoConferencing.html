@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="../common/micc.js"></script>
+    <script src="openMediaVideoConferencing.js"></script>
+</head>
+
+<body>
+    <div class="w3-container w3-blue">
+        <h1 class="w3-text-shadow">MiCC open media video conferencing demo</h1>
+    </div>
+    <div class="w3-accordion w3-card-4">
+        <button class="w3-btn-block w3-blue w3-topbar w3-border-white" onclick="toggleAccordion('login-accordian');">Show login</button>
+        <div id="login-accordian" class="w3-accordion-content w3-container">
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="miccServer" placeholder="Server address"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
+            </p>
+            <p>
+                <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
+            </p>
+        </div>
+    </div>
+	<div class="w3-panel w3-card-4 w3-row">
+		<p>
+			<button class="w3-btn-block w3-blue w3-round w3-jumbo" onclick="postOpenMedia();">Start Chat</button>
+		</p>
+</div>
+</body>
+
+</html>
