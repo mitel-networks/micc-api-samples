@@ -16,7 +16,7 @@ function login() {
         $('#username').val(),
         $('#password').val(), 
 		function(responseData) {
-		//write code here to process the data from the login
+		//you can write code here to process the data from the login
 		//Remember to not to expose the access token here
     }
     );
@@ -25,9 +25,10 @@ function login() {
 function postOpenMedia() {
 
 	var id = generateGuid();
-
+	var targetUri = `https://appear.in/${id}`;
+	
     micc.postOpenMedia(`{
-        "targetUri": "https://appear.in/52105",
+        "targetUri": '${targetUri}',
                         "targetUriEmbedded": "true",
                         "previewUrl": "",
                         "id": "${id}",
@@ -38,7 +39,7 @@ function postOpenMedia() {
     }`, function(responseData) {
         console.log('Response from POST open media:  ', responseData);
 		
-		window.location = "https://appear.in/52105";
+		window.location = `${targetUri}`;
     });
 }
 
