@@ -51,7 +51,7 @@ function Micc(serverAddress) {
     }
 
     this.postOpenMedia = function(body, processResponse) {
-		this.postRequest(`openmedia`, body, processResponse);
+        this.postRequest(`openmedia`, body, processResponse);
     }
     
     this.getRequest = function(apiSubUrl, processResponse) {
