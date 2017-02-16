@@ -1,5 +1,5 @@
 # openMediaAppearIn.html
-Basic demo of open media conversation routing by glueing [appear.in](https://appear.in/)
+Basic demo of open media conversation routing through integration with [appear.in](https://appear.in/)
 
 * All errors are written to the console.
 * Login first with username and password.
