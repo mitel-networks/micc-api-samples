@@ -15,15 +15,14 @@ function Micc(serverAddress) {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-        })
-            .done(function (data) {
-                console.log('Login success.  Received data:  ', data);
-                bearerToken = data.access_token;
-                if (processResponse) {
-                    data.miccServer = miccServerBase;
-                    processResponse(data);
-                }
-            });
+        }).done(function (data) {
+            console.log('Login success.  Received data:  ', data);
+            bearerToken = data.access_token;
+            if (processResponse) {
+                data.miccServer = miccServerBase;
+                processResponse(data);
+            }
+        });
     };
 
     this.getEmployeeStats = function (employeeId, receiveEmployeeStats) {
@@ -94,10 +93,9 @@ function Micc(serverAddress) {
                 'content-type': 'application/json'
             },
             data: body
-        })
-            .done(function (receivedData) {
-                console.log('Received response:  ', receivedData);
-                processResponse(receivedData);
-            });
+        }).done(function (receivedData) {
+            console.log('Received response:  ', receivedData);
+            processResponse(receivedData);
+        });
     }
 };

@@ -10,6 +10,7 @@
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/ms-signalr/jquery.signalR.js"></script>
     <script src="../common/micc.js"></script>
+    <script src="../common/miccSignalR.js"></script>
     <script src="agentPresenceController.js"></script>
 </head>
 
@@ -63,8 +64,8 @@
     <div id="presenceStates">
         <ul class="nav nav-pills nav-stacked">
             <li><a href="#" onclick="setPresence('Available')">Available</a></li>
-            <li><a href="#" onclick="setPresence('Busy')">Busy...</a></li>
-            <li><a href="#" onclick="setPresence('DND')">Do Not Disturb...</a></li>
+            <li><a href="#" onclick="showReasonCodes('Busy')">Busy...</a></li>
+            <li><a href="#" onclick="showReasonCodes('DND')">Do Not Disturb...</a></li>
             <li><a href="#" onclick="setPresence('Offline')">Offline</a></li>
         </ul>
     </div>
