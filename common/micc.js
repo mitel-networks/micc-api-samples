@@ -15,11 +15,10 @@ function Micc(serverAddress) {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-        })
-        .done(function (data) {
+        }).done(function (data) {
             console.log('Login success.  Received data:  ', data);
             bearerToken = data.access_token;
-            if(processResponse) {
+            if (processResponse) {
                 data.miccServer = miccServerBase;
                 processResponse(data);
             }
@@ -27,7 +26,7 @@ function Micc(serverAddress) {
     };
 
     this.getEmployeeStats = function (employeeId, receiveEmployeeStats) {
-        if(!employeeId) {
+        if (!employeeId) {
             console.log('Will not fetch because no employee id given.');
         } else {
             this.getRequest(`employees/${employeeId}/state`, receiveEmployeeStats);
@@ -35,34 +34,54 @@ function Micc(serverAddress) {
     };
 
     this.getQueueStats = function (queueId, receiveQueueStats) {
-        if(!queueId) {
+        if (!queueId) {
             console.log('Will not fetch because no queue id given.');
         } else {
             this.getRequest(`queues/${queueId}/state`, receiveQueueStats);
         }
     };
 
-    this.postEmployeeConversation = function(employeeId, body, processResponse) {
-        if(!employeeId) {
+    this.getEmployeeBusyReasonCodes = function (employeeId, receiveEmployeeBusyCodes) {
+        if (!employeeId) {
+            console.log('Will not fetch because no employee id given.');
+        } else {
+            this.getRequest(`employees/${employeeId}/busyreasoncodes`, receiveEmployeeBusyCodes);
+        }
+    };
+
+    this.postEmployeeConversation = function (employeeId, body, processResponse) {
+        if (!employeeId) {
             console.log('Will not fetch because no employee id given.');
         } else {
             this.postRequest(`employees/${employeeId}/conversations`, body, processResponse);
         }
     }
 
-    this.postOpenMedia = function(body, processResponse) {
+    this.putEmployeeState = function (employeeId, body, processResponse) {
+        if (!employeeId) {
+            console.log('Will not fetch because no employee id given.');
+        } else {
+            this.putRequest(`employees/${employeeId}/state`, body, processResponse);
+        }
+    }
+
+    this.postOpenMedia = function (body, processResponse) {
         this.postRequest(`openmedia`, body, processResponse);
     }
-    
-    this.getRequest = function(apiSubUrl, processResponse) {
+
+    this.getRequest = function (apiSubUrl, processResponse) {
         this.makeAjaxRequest(apiSubUrl, 'GET', null, processResponse);
     }
 
-    this.postRequest = function(apiSubUrl, body, processResponse) {
+    this.postRequest = function (apiSubUrl, body, processResponse) {
         this.makeAjaxRequest(apiSubUrl, 'POST', body, processResponse);
     }
 
-    this.makeAjaxRequest = function(apiSubUrl, method, body, processResponse) {
+    this.putRequest = function (apiSubUrl, body, processResponse) {
+        this.makeAjaxRequest(apiSubUrl, 'PUT', body, processResponse);
+    }
+
+    this.makeAjaxRequest = function (apiSubUrl, method, body, processResponse) {
         var url = `${miccSdkBase}/${apiSubUrl}`;
         console.log(`Processing ${method} request to ${url}`);
 
@@ -71,11 +90,10 @@ function Micc(serverAddress) {
             url: url,
             headers: {
                 Authorization: `Bearer ${bearerToken}`,
-                'content-type':'application/json'
+                'content-type': 'application/json'
             },
             data: body
-        })
-        .done(function (receivedData) {
+        }).done(function (receivedData) {
             console.log('Received response:  ', receivedData);
             processResponse(receivedData);
         });

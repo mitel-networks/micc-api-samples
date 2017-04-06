@@ -20,29 +20,12 @@ function login() {
 }
 
 function connectToEmployeeHub(data) {
-    var connection = $.hubConnection(`${data.miccServer}/miccsdk/`, {
-         qs: `sessionid=Bearer ${data.access_token}`
-    });
-    connection.logging = true;
-    connection.error(function(error) {
-        console.error('Connection error:  ', error);
-    });
-    connection.stateChanged(function(state) {
-        console.info('Connection state changed:  ', state);
-    });
-
-    connection.start()
-        .done(function() {
-            console.info(`Connection established with ID=${connection.id}`);
-
-            var hub = connection.createHubProxy('employeeHub');
-            hub.invoke('addSelfMonitor');
-            hub.on('employeeConversationChanged', onEmployeeConversationChanged);
-            hub.on('employeeConversationRemoved', onEmployeeConversationRemoved);
-        })
-        .fail(function() {
-            console.error('Connection failed');
-        });
+    var miccSignalr = new miccSignalr(data.miccServer, data.access_token);
+    miccSignalr.start(function () {
+        miccSignalr.addSelfMonitor();
+        miccSignalr.employeeConversationChanged(onEmployeeConversationChanged);
+        miccSignalr.employeeConversationRemoved(onEmployeeConversationRemoved);
+    });    
 }
 
 function onEmployeeConversationChanged(conversations) {

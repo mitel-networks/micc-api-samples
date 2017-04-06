@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/ms-signalr/jquery.signalR.js"></script>
+    <script src="../common/micc.js"></script>
+    <script src="../common/miccSignalR.js"></script>
+    <script src="agentPresenceController.js"></script>
+</head>
+
+<body>
+    <div class="w3-container w3-blue">
+        <h1 class="w3-text-shadow">MiCC Agent Presence demo</h1>
+    </div>
+    <div class="w3-accordion">
+        <div class="w3-row">
+            <div>
+                <button class="w3-btn-block w3-blue w3-topbar w3-border-white" data-toggle="collapse" data-target="#login">Show login</button>
+                <div id="login" class="collapse">
+                    <p>
+                        <input class="w3-input w3-border w3-round" type="text" id="miccServer" placeholder="Server address"></input>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
+                    </p>
+                    <p>
+                        <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-panel w3-card-4 w3-row">
+        <div class="w3-col m4">
+            <h3>Employee info</h3>
+            <p>
+                <label id="employeeName">Last, First</label>
+                <br />
+                <label id="employeeReporting">Reporting</label>
+            </p>
+        </div>
+        <div class="w3-col m8">
+            <h3>ACD State Info</h3>
+            <p>
+                <label id="employeeState">Employee State</label>
+                <br />
+                <span id="agentStats">Agent States</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="well well-sm" style="margin:2px">
+        <strong>Apply Presence</strong>
+    </div>
+    <div id="presenceStates">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#" onclick="setPresence('Available')">Available</a></li>
+            <li><a href="#" onclick="showReasonCodes('Busy')">Busy...</a></li>
+            <li><a href="#" onclick="showReasonCodes('DND')">Do Not Disturb...</a></li>
+            <li><a href="#" onclick="setPresence('Offline')">Offline</a></li>
+        </ul>
+    </div>
+    <div id="busyCodes" style="display: none">
+        <button type="button" class="btn btn-info" style="margin: 5px" onclick="showPresenceList()">Back</button>
+        <p style="padding: 15px 15px 5px 15px">Choose a busy reason code</p>
+        <ul class="nav nav-pills nav-stacked"></ul>
+    </div>
+    <div id="dndCodes" style="display: none">
+        <button type="button" class="btn btn-info" style="margin: 5px" onclick="showPresenceList()">Back</button>
+        <p style="padding: 15px 15px 5px 15px">Choose a DND reason code</p>
+        <ul class="nav nav-pills nav-stacked"></ul>
+    </div>
+</body>
+
+</html>
