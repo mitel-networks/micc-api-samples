@@ -23,9 +23,9 @@ function connectToEmployeeHub(data) {
     var miccSignalr = new miccSignalr(data.miccServer, data.access_token);
     miccSignalr.start(function () {
         var hub = miccSignalr.createEmployeeHubProxy();
-        miccSignalr.invokeHubMethod(hub, 'addSelfMonitor');
-        miccSignalr.onClientMethod(hub, 'employeeConversationChanged', onEmployeeConversationChanged);
-        miccSignalr.onClientMethod(hub, 'employeeConversationRemoved', onEmployeeConversationRemoved);
+        miccSignalr.addSelfMonitor();
+        miccSignalr.employeeConversationChanged(onEmployeeConversationChanged);
+        miccSignalr.employeeConversationRemoved(onEmployeeConversationRemoved);
     });    
 }
 

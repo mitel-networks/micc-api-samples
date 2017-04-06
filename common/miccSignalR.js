@@ -4,6 +4,9 @@ function MiccSignalR(miccServerBase, accessToken) {
         qs: `sessionid=Bearer ${accessToken}`
     });
 
+    // hubs
+    var employeeHub;
+
     singlarConnection.logging = true;
 
     this.onError = function (processError) {
@@ -30,19 +33,32 @@ function MiccSignalR(miccServerBase, accessToken) {
         });
     }
 
-    this.invokeHubMethod = function (hub, methodName) {
-        hub.invoke(methodName);
+    this.createEmployeeHubProxy = function () {
+        employeeHub = singlarConnection.createHubProxy('employeeHub');
     }
 
-    this.onClientMethod = function (hub, methoddName, callback) {
-        hub.on(methoddName, function onCallback(args) {
-            console.info(`Received response for ${methoddName}:${args}`);
+    this.employeeStateChanged = function (callback) {
+        employeeHub.on('employeeStateChanged', function onCallback(args) {
+            console.info(`Received response for employeeStateChanged: ${args}`);
             callback(args);
         });
     }
 
-    // Employee hub proxy
-    this.createEmployeeHubProxy = function () {
-        return singlarConnection.createHubProxy('employeeHub');
+    this.employeeConversationChanged = function (callback) {
+        employeeHub.on('employeeConversationChanged', function onCallback(args) {
+            console.info(`Received response for employeeConversationChanged: ${args}`);
+            callback(args);
+        });
+    }
+
+    this.employeeConversationRemoved = function (callback) {
+        employeeHub.on('employeeConversationRemoved', function onCallback(args) {
+            console.info(`Received response for employeeConversationRemoved: ${args}`);
+            callback(args);
+        });
+    }
+
+    this.addSelfMonitor = function () {
+        employeeHub.invoke('addSelfMonitor');
     }
 }
