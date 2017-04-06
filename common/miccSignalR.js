@@ -6,6 +6,7 @@ function MiccSignalR(miccServerBase, accessToken) {
 
     // hubs
     var employeeHub;
+    var agentHub;
 
     singlarConnection.logging = true;
 
@@ -33,6 +34,12 @@ function MiccSignalR(miccServerBase, accessToken) {
         });
     }
 
+    this.createAgentHubProxy = function () {
+        if (!agentHub) {
+            agentHub = singlarConnection.createHubProxy('agentHub');
+        }
+    }
+
     this.createEmployeeHubProxy = function () {
         if (!employeeHub) {
             employeeHub = singlarConnection.createHubProxy('employeeHub');
@@ -42,7 +49,7 @@ function MiccSignalR(miccServerBase, accessToken) {
     this.onEmployeeHub = function (methodName, callback) {
         this.createEmployeeHubProxy();
         employeeHub.on(methodName, function onCallback(args) {
-            console.info(`Received response for ${methodName}: ${args}`);
+            console.info(`Received response for ${methodName}: ${JSON.stringify(args)}`);
             callback(args);
         });
     }
