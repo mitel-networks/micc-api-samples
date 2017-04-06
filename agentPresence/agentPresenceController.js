@@ -15,7 +15,6 @@ function connectToEmployeeHub(data) {
 
     var miccSignalr = new MiccSignalR(data.miccServer, data.access_token);
     miccSignalr.start(function () {
-        var hub = miccSignalr.createEmployeeHubProxy();
         miccSignalr.addSelfMonitor();
         miccSignalr.employeeStateChanged(populateEmployeeInfo);
     });

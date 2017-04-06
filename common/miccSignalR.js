@@ -34,10 +34,13 @@ function MiccSignalR(miccServerBase, accessToken) {
     }
 
     this.createEmployeeHubProxy = function () {
-        employeeHub = singlarConnection.createHubProxy('employeeHub');
+        if (!employeeHub) {
+            employeeHub = singlarConnection.createHubProxy('employeeHub');
+        }
     }
 
     this.employeeStateChanged = function (callback) {
+        this.createEmployeeHubProxy();
         employeeHub.on('employeeStateChanged', function onCallback(args) {
             console.info(`Received response for employeeStateChanged: ${args}`);
             callback(args);
@@ -45,6 +48,7 @@ function MiccSignalR(miccServerBase, accessToken) {
     }
 
     this.employeeConversationChanged = function (callback) {
+        this.createEmployeeHubProxy();
         employeeHub.on('employeeConversationChanged', function onCallback(args) {
             console.info(`Received response for employeeConversationChanged: ${args}`);
             callback(args);
@@ -52,6 +56,7 @@ function MiccSignalR(miccServerBase, accessToken) {
     }
 
     this.employeeConversationRemoved = function (callback) {
+        this.createEmployeeHubProxy();
         employeeHub.on('employeeConversationRemoved', function onCallback(args) {
             console.info(`Received response for employeeConversationRemoved: ${args}`);
             callback(args);
@@ -59,6 +64,7 @@ function MiccSignalR(miccServerBase, accessToken) {
     }
 
     this.addSelfMonitor = function () {
+        this.createEmployeeHubProxy();
         employeeHub.invoke('addSelfMonitor');
     }
 }
