@@ -39,28 +39,24 @@ function MiccSignalR(miccServerBase, accessToken) {
         }
     }
 
-    this.employeeStateChanged = function (callback) {
+    this.onEmployeeHub = function (methodName, callback) {
         this.createEmployeeHubProxy();
-        employeeHub.on('employeeStateChanged', function onCallback(args) {
-            console.info(`Received response for employeeStateChanged: ${args}`);
+        employeeHub.on(methodName, function onCallback(args) {
+            console.info(`Received response for ${methodName}: ${args}`);
             callback(args);
         });
+    }
+
+    this.employeeStateChanged = function (callback) {
+        this.onEmployeeHub('employeeStateChanged', callback);
     }
 
     this.employeeConversationChanged = function (callback) {
-        this.createEmployeeHubProxy();
-        employeeHub.on('employeeConversationChanged', function onCallback(args) {
-            console.info(`Received response for employeeConversationChanged: ${args}`);
-            callback(args);
-        });
+        this.onEmployeeHub('employeeConversationChanged', callback);
     }
 
     this.employeeConversationRemoved = function (callback) {
-        this.createEmployeeHubProxy();
-        employeeHub.on('employeeConversationRemoved', function onCallback(args) {
-            console.info(`Received response for employeeConversationRemoved: ${args}`);
-            callback(args);
-        });
+        this.onEmployeeHub('employeeConversationRemoved', callback);
     }
 
     this.addSelfMonitor = function () {
