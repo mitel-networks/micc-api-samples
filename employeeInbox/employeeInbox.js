@@ -20,7 +20,7 @@ function login() {
 }
 
 function connectToEmployeeHub(data) {
-    var miccSignalr = new miccSignalr(data.miccServer, data.access_token);
+    var miccSignalr = new MiccSignalR(data.miccServer, data.access_token);
     miccSignalr.start(function () {
         miccSignalr.addSelfMonitor();
         miccSignalr.employeeConversationChanged(onEmployeeConversationChanged);
