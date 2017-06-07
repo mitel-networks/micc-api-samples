@@ -49,6 +49,14 @@ function Micc(serverAddress) {
         }
     };
 
+    this.getAgentGroupPresence = function (employeeId, receiveAgentGroupPresence) {
+        if (!employeeId) {
+            console.log('Will not fetch because no employee id given.');
+        } else {
+            this.getRequest(`employees/${employeeId}/agentgrouppresence`, receiveAgentGroupPresence);
+        }
+    };
+
     this.postEmployeeConversation = function (employeeId, body, processResponse) {
         if (!employeeId) {
             console.log('Will not fetch because no employee id given.');
@@ -62,6 +70,14 @@ function Micc(serverAddress) {
             console.log('Will not fetch because no employee id given.');
         } else {
             this.putRequest(`employees/${employeeId}/state`, body, processResponse);
+        }
+    }
+    
+    this.putAgentGroupPresence = function (employeeId, body, processResponse) {
+        if (!employeeId) {
+            console.log('Will not fetch because no employee id given.');
+        } else {
+            this.putRequest(`employees/${employeeId}/agentgrouppresence`, body, processResponse);
         }
     }
 

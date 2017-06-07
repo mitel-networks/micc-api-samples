@@ -54,6 +54,18 @@ function MiccSignalR(miccServerBase, accessToken) {
         });
     }
 
+    this.onAgentHub = function (methodName, callback) {
+        this.createAgentHubProxy();
+        agentHub.on(methodName, function onCallback(args) {
+            console.info(`Received response for ${methodName}: ${JSON.stringify(args)}`);
+            callback(args);
+        });
+    }
+
+    this.agentStateChanged = function (callback) {
+        this.onAgentHub('onAgentStateChanged', callback);
+    }
+
     this.employeeStateChanged = function (callback) {
         this.onEmployeeHub('employeeStateChanged', callback);
     }
