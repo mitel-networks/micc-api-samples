@@ -95,52 +95,44 @@ function Micc(serverAddress) {
         }
     }
 
-    this.pickQueueConversation = function (conversationId, queueId) {
+    this.pickQueueConversation = function (conversationId, queueId, processResponse) {
         this.putQueueConversation(queueId, conversationId, `{
             conversationAction: 'Pick',
             id: '${conversationId}'
-            }`, function processResponse(responseData) {
-                console.log(`Response for 'Pick' for conversation ${conversationId}:  `, responseData);
-            });
+            }`, processResponse);
     }
 
-    this.AcceptConversation = function (conversationId, employeeId, isReplyAll) {
-        var tags = [{ key: 'emailAcceptType', value: isReplyAll ? "ReplyAll" : "Reply" }];
+    this.acceptConversation = function (conversationId, employeeId, tags, processResponse) {
         this.putEmployeeConversation(employeeId, conversationId, `{
             conversationAction: 'Accept',
             id: '${conversationId}',
-            tags: ${JSON.stringify(tags)}
-            }`, function processResponse(responseData) {
-                console.log(`Response for 'Accept' for conversation ${conversationId}:  `, responseData);
-            });
+            tags: ${tags}
+            }`, processResponse);
     }
 
-    this.NoReplyQueueConversation = function (conversationId, queueId) {
+    this.noReplyQueueConversation = function (conversationId, queueId, processResponse) {
         this.putQueueConversation(queueId, conversationId, `{
             conversationAction: 'NoReply',
             id: '${conversationId}'
-            }`, function processResponse(responseData) {
-                console.log(`Response for 'No Reply' for queue conversation ${conversationId}:  `, responseData);
-            });
+            }`, processResponse);
     }
 
-    this.JunkQueueConversation = function (conversationId, queueId) {
+    this.junkQueueConversation = function (conversationId, queueId, processResponse) {
         this.putQueueConversation(queueId, conversationId, `{
             conversationAction: 'Junk',
             id: '${conversationId}'
-            }`, function processResponse(responseData) {
-                console.log(`Response for 'Junk' for queue conversation ${conversationId}:  `, responseData);
-            });
+            }`, processResponse);
     }
 
-    this.pickAndAcceptQueueConversation = function (conversationId, queueId, employeeId, isReplyAll) {
+    this.pickAndAcceptQueueConversation = function (conversationId, queueId, employeeId, tags,
+        processResponse) {
         var _this = this;
         this.putQueueConversation(queueId, conversationId, `{
             conversationAction: 'Pick',
             id: '${conversationId}'
-            }`, function processResponse(responseData) {
+            }`, function processPickResponse(responseData) {
                 console.log(`Response for 'Pick' for conversation ${conversationId}:  `, responseData);
-                _this.AcceptConversation(conversationId, employeeId, isReplyAll);
+                _this.acceptConversation(conversationId, employeeId, tags, processResponse);
             });
     }
 

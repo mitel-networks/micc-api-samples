@@ -21,7 +21,7 @@
     </div>
     <div class="w3-accordion w3-card-4">
         <div class="w3-row">
-            <div class="w3-col m6">
+            <div>
                 <button class="w3-btn-block w3-blue w3-topbar w3-border-white" data-toggle="collapse" data-target="#login">Show login</button>
                 <div id="login" class="collapse">
                     <p>
@@ -38,38 +38,27 @@
                     </p>
                 </div>
             </div>
-            <div class="w3-col m6">
-                <button class="w3-btn-block w3-blue w3-topbar w3-border-white" data-toggle="collapse" data-target="#misc">Show Misc</button>
-                <div id="misc" class="collapse">
-                    <p>
-                        <div class="w3-row-padding">
-                            <div class="w3-col m6">
-                                <input class="w3-input w3-border w3-round" type="text" id="queueId" placeholder="ID, reporting, or name"></input>
-                            </div>
-                            <div class="w3-col m6">
-                                <button class="w3-btn-block w3-blue w3-round" onclick="addQueueRow($('#queueId').val());">Add queue</button>
-                            </div>
-                        </div>
-                    </p>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="w3-panel w3-card-4">
-        <h4>Queue Stats</h4>
-        <table class="w3-table-all w3-centered" id="queueStatsTable">
+    <div class="w3-panel w3-card-2">
+        <h4>Queues</h4>
+        <p>
+            <div class="w3-row">
+                <div class="w3-col w3-margin-right m2">
+                    <input class="w3-input w3-border w3-round" type="text" id="queueId" placeholder="ID, reporting, or name"></input>
+                </div>
+                <div class="w3-col m2">
+                    <button class="w3-btn-block w3-blue w3-round" onclick="addQueueRow($('#queueId').val());">Add queue</button>
+                </div>
+            </div>
+        </p>
+        <table class="w3-table-all w3-centered" id="queuesTable">
             <thead>
                 <tr class="w3-blue">
                     <th></th>
                     <th>name</th>
                     <th>reporting</th>
                     <th>media</th>
-                    <th>waiting</th>
-                    <th>longestWaiting</th>
-                    <th>EWT</th>
-                    <th>SL %</th>
-                    <th>offered</th>
-                    <th>answered</th>
                 </tr>
             </thead>
             <tbody>
