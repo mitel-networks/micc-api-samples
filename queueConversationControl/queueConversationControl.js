@@ -179,28 +179,28 @@ function getButtonHtml(title, conversationId, queueId) {
 function performConversationAction(conversationId, queueId, action) {
     if (action === 'Pick') {
         micc.pickQueueConversation(`${conversationId}`, `${queueId}`, function (responseData) {
-            processResponse(conversationId, action, responseData);
+            logResponse(conversationId, action, responseData);
         });
     } else if (action === 'Pick & Reply All') {
-        var tags = JSON.stringify([{ key: 'emailAcceptType', value: "ReplyAll" }]);
-        micc.pickAndAcceptQueueConversation(`${conversationId}`, `${queueId}`, 'me', `${tags}`, function (responseData) {
-            processResponse(conversationId, action, responseData);
+        var tags = [{ key: 'emailAcceptType', value: "ReplyAll" }];
+        micc.pickAndAcceptQueueConversation(`${conversationId}`, `${queueId}`, 'me', tags, function (responseData) {
+            logResponse(conversationId, action, responseData);
         });
     } else if (action === 'Pick & Reply') {
         micc.pickAndAcceptQueueConversation(`${conversationId}`, `${queueId}`, 'me', null, function (responseData) {
-            processResponse(conversationId, action, responseData);
+            logResponse(conversationId, action, responseData);
         });
     } else if (action === 'No Reply') {
         micc.noReplyQueueConversation(`${conversationId}`, `${queueId}`, function (responseData) {
-            processResponse(conversationId, action, responseData);
+            logResponse(conversationId, action, responseData);
         });
     } else if (action === 'Junk') {
         micc.junkQueueConversation(`${conversationId}`, `${queueId}`, function (responseData) {
-            processResponse(conversationId, action, responseData);
+            logResponse(conversationId, action, responseData);
         });
     }
 }
 
-function processResponse(conversationId, action, responseData) {
+function logResponse(conversationId, action, responseData) {
     console.log(`Response of '${action}' for ${conversationId}:  `, responseData);
 }

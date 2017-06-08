@@ -106,7 +106,7 @@ function Micc(serverAddress) {
         this.putEmployeeConversation(employeeId, conversationId, `{
             conversationAction: 'Accept',
             id: '${conversationId}',
-            tags: ${tags}
+            tags: ${JSON.stringify(tags)}
             }`, processResponse);
     }
 
