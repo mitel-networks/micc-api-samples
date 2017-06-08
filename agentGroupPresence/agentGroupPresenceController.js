@@ -62,7 +62,7 @@ function populateAgentGroupInfo(agentGroups) {
         }
 
         var query = $(matchingRow);
-        query.find('td.Name')
+        query.find('div.Name')
             .text(a.name);
 
         a.statuses.forEach(s => {
@@ -70,52 +70,78 @@ function populateAgentGroupInfo(agentGroups) {
                 this.agentIds.push(s.id);
             }
 
-            query.find('td.' + s.type)
+            query.find('div.' + s.type)
                 .text(s.status);
         });
     });
 }
 
-function joinAll(button) {
+function join(button){
+    joinLeave(button, 'Present');
+}
+
+function leave(button){
+    joinLeave(button, 'NotPresent');
+}
+
+function joinLeave(button, status) {
     var id = button.parentElement.parentElement.id;
+    var type = $(button).siblings('div')[0].className;
+
+    var employeeAgentGroupModel = {};
+    employeeAgentGroupModel.id = id;
+
     var agentGroupClone = jQuery.extend(true, {}, this.agentGroups);
     agentGroupClone._embedded.items.forEach(a => {
         if(a.id === id){
+            employeeAgentGroupModel.name = a.name;
+            employeeAgentGroupModel.reporting = a.reporting;
             a.statuses.forEach(s => {
-                s.status = 'Present';
+                if(s.type === type){
+                    s.status = status;
+                }
             });
+            employeeAgentGroupModel.statuses = a.statuses;
         }
     });
-    micc.putAgentGroupPresence(`me`, JSON.stringify(agentGroupClone), function processResponse(responseData) {
-        console.log(`Response for join all agent group presence for ${id}:  `, responseData);
+    micc.putAgentGroupPresenceByGroupId(`me`, id, JSON.stringify(employeeAgentGroupModel), function processResponse(responseData) {
+        console.log(`Response for agent group presence for ${id} for type ${type} with status ${status}:  `, responseData);
     });
 }
 
-function leaveAll(button) {
+function joinLeaveAll(button, status) {
     var id = button.parentElement.parentElement.id;
     var agentGroupClone = jQuery.extend(true, {}, this.agentGroups);
     agentGroupClone._embedded.items.forEach(a => {
         if(a.id === id){
             a.statuses.forEach(s => {
-                s.status = 'NotPresent';
+                s.status = status;
             });
         }
     });
     micc.putAgentGroupPresence(`me`, JSON.stringify(agentGroupClone), function processResponse(responseData) {
-        console.log(`Response for leave all agent group presence for ${id}:  `, responseData);
+        console.log(`Response for all agent group presence for ${id} with status ${status}:  `, responseData);
     });
+}
+
+function joinAll(button) {
+    joinLeaveAll(button, 'Present');
+}
+
+function leaveAll(button) {
+    joinLeaveAll(button, 'NotPresent');
 }
 
 function addRow(agentGroup) {
     return $(`<tr id="${agentGroup.id}" class="conversationRow">
-    <td class="JoinAll"><button class="w3-btn-block w3-blue w3-round" onclick="joinAll(this);">Join All</button></td>
-    <td class="LeaveAll"><button class="w3-btn-block w3-blue w3-round" onclick="leaveAll(this);">Leave All</button></td>
-    <td class="Name">?</td>
-    <td class="Voice">N/A</td>
-    <td class="Chat">N/A</td>
-    <td class="Email">N/A</td>
-    <td class="Sms">N/A</td>
-    <td class="OpenMedia">N/A</td>
+    <td class="JoinAll"><button class="group-button w3-btn-block w3-blue w3-round" onclick="joinAll(this);">Join All</button></td>
+    <td class="LeaveAll"><button class="group-button w3-btn-block w3-blue w3-round" onclick="leaveAll(this);">Leave All</button></td>
+    <td><div class="Name">?</div></td>
+    <td><div class="Voice">N/A</div><button class="individual-button w3-btn-block w3-blue w3-round" onclick="join(this);">Join</button><button class="individual-button w3-btn-block w3-blue w3-round" onclick="leave(this);">Leave</button></td>
+    <td><div class="Chat">N/A</div><button class="individual-button w3-btn-block w3-blue w3-round" onclick="join(this);">Join</button><button class="individual-button w3-btn-block w3-blue w3-round" onclick="leave(this);">Leave</button></td>
+    <td><div class="Email">N/A</div><button class="individual-button w3-btn-block w3-blue w3-round" onclick="join(this);">Join</button><button class="individual-button w3-btn-block w3-blue w3-round" onclick="leave(this);">Leave</button></td>
+    <td><div class="Sms">N/A</div><button class="individual-button w3-btn-block w3-blue w3-round" onclick="join(this);">Join</button><button class="individual-button w3-btn-block w3-blue w3-round" onclick="leave(this);">Leave</button></td>
+    <td><div class="OpenMedia">N/A</div><button class="individual-button w3-btn-block w3-blue w3-round" onclick="join(this);">Join</button><button class="individual-button w3-btn-block w3-blue w3-round" onclick="leave(this);">Leave</button></td>
     </tr>`)
     .appendTo('#agentGroupTable > tbody:last-child');
 }
