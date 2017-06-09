@@ -100,8 +100,7 @@ function Micc(serverAddress) {
     this.putAgentGroupPresenceByGroupId = function (employeeId, groupId, body, processResponse) {
         if (!employeeId) {
             console.log('Will not fetch because no employee id given.');
-        } 
-        else if (!groupId) {
+        } else if (!groupId) {
             console.log('Will not fetch because no group id given.');
         } else {
             this.putRequest(`employees/${employeeId}/agentgrouppresence/${groupId}`, body, processResponse);
