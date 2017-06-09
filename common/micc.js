@@ -41,6 +41,14 @@ function Micc(serverAddress) {
         }
     };
 
+    this.getQueueConversations = function (queueId, receiveQueueConversations) {
+        if (!queueId) {
+            console.log('Will not fetch because no queue id given.');
+        } else {
+            this.getRequest(`queues/${queueId}/conversations`, receiveQueueConversations);
+        }
+    };
+
     this.getEmployeeBusyReasonCodes = function (employeeId, receiveEmployeeBusyCodes) {
         if (!employeeId) {
             console.log('Will not fetch because no employee id given.');
@@ -62,6 +70,14 @@ function Micc(serverAddress) {
             console.log('Will not fetch because no employee id given.');
         } else {
             this.postRequest(`employees/${employeeId}/conversations`, body, processResponse);
+        }
+    }
+
+    this.putEmployeeConversation = function (employeeId, conversationId, body, processResponse) {
+        if (!employeeId) {
+            console.log('Will not fetch because no employee id given.');
+        } else {
+            this.putRequest(`employees/${employeeId}/conversations/${conversationId}`, body, processResponse);
         }
     }
 
@@ -94,6 +110,57 @@ function Micc(serverAddress) {
 
     this.postOpenMedia = function (body, processResponse) {
         this.postRequest(`openmedia`, body, processResponse);
+    }
+
+    this.putQueueConversation = function (queueId, conversationId, body, processResponse) {
+        if (!queueId) {
+            console.log('Will not perform action because no queue id given.');
+        } else if (!conversationId) {
+            console.log('Will not perform action because no conversation id given.');
+        } else {
+            this.putRequest(`queues/${queueId}/conversations/${conversationId}`, body, processResponse);
+        }
+    }
+
+    this.pickQueueConversation = function (conversationId, queueId, processResponse) {
+        this.putQueueConversation(queueId, conversationId, `{
+            conversationAction: 'Pick',
+            id: '${conversationId}'
+            }`, processResponse);
+    }
+
+    this.acceptConversation = function (conversationId, employeeId, tags, processResponse) {
+        this.putEmployeeConversation(employeeId, conversationId, `{
+            conversationAction: 'Accept',
+            id: '${conversationId}',
+            tags: ${JSON.stringify(tags)}
+            }`, processResponse);
+    }
+
+    this.noReplyQueueConversation = function (conversationId, queueId, processResponse) {
+        this.putQueueConversation(queueId, conversationId, `{
+            conversationAction: 'NoReply',
+            id: '${conversationId}'
+            }`, processResponse);
+    }
+
+    this.junkQueueConversation = function (conversationId, queueId, processResponse) {
+        this.putQueueConversation(queueId, conversationId, `{
+            conversationAction: 'Junk',
+            id: '${conversationId}'
+            }`, processResponse);
+    }
+
+    this.pickAndAcceptQueueConversation = function (conversationId, queueId, employeeId, tags,
+        processResponse) {
+        var _this = this;
+        this.putQueueConversation(queueId, conversationId, `{
+            conversationAction: 'Pick',
+            id: '${conversationId}'
+            }`, function processPickResponse(responseData) {
+                console.log(`Response for 'Pick' for conversation ${conversationId}:  `, responseData);
+                _this.acceptConversation(conversationId, employeeId, tags, processResponse);
+            });
     }
 
     this.getRequest = function (apiSubUrl, processResponse) {

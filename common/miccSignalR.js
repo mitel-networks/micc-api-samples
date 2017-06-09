@@ -7,6 +7,7 @@ function MiccSignalR(miccServerBase, accessToken) {
     // hubs
     var employeeHub;
     var agentHub;
+    var queueHub;
 
     singlarConnection.logging = true;
 
@@ -46,9 +47,23 @@ function MiccSignalR(miccServerBase, accessToken) {
         }
     }
 
+    this.createQueueHubProxy = function () {
+        if (!queueHub) {
+            queueHub = singlarConnection.createHubProxy('queueHub');
+        }
+    }
+
     this.onEmployeeHub = function (methodName, callback) {
         this.createEmployeeHubProxy();
         employeeHub.on(methodName, function onCallback(args) {
+            console.info(`Received response for ${methodName}: ${JSON.stringify(args)}`);
+            callback(args);
+        });
+    }
+
+    this.onQueueHub = function (methodName, callback) {
+        this.createQueueHubProxy();
+        queueHub.on(methodName, function onCallback(args) {
             console.info(`Received response for ${methodName}: ${JSON.stringify(args)}`);
             callback(args);
         });
@@ -81,5 +96,37 @@ function MiccSignalR(miccServerBase, accessToken) {
     this.addSelfMonitor = function () {
         this.createEmployeeHubProxy();
         employeeHub.invoke('addSelfMonitor');
+    }
+
+    this.addQueueStateMonitor = function (ids) {
+        this.createQueueHubProxy();
+        queueHub.invoke('addStateMonitor', ids);
+    }
+
+    this.removeQueueStateMonitor = function (ids) {
+        this.createQueueHubProxy();
+        queueHub.invoke('removeStateMonitor', ids);
+    }
+
+    this.addQueueConversationsMonitor = function (ids) {
+        this.createQueueHubProxy();
+        queueHub.invoke('addConversationMonitor', ids);
+    }
+
+    this.removeQueueConversationsMonitor = function (ids) {
+        this.createQueueHubProxy();
+        queueHub.invoke('removeConversationMonitor', ids);
+    }
+
+    this.queueStateChanged = function (callback) {
+        this.onQueueHub('queueStateChanged', callback);
+    }
+
+    this.queueConversationChanged = function (callback) {
+        this.onQueueHub('queueConversationChanged', callback);
+    }
+
+    this.queueConversationRemoved = function (callback) {
+        this.onQueueHub('queueConversationRemoved', callback);
     }
 }
