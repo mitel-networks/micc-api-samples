@@ -33,6 +33,7 @@ function toggleAccordion(elementId) {
 }
 
 function login() {
+    $('#agentGroupTable').find("tr:gt(0)").remove();
     if($('#miccServer').val()){
         micc = new Micc($('#miccServer').val());
     }
@@ -185,10 +186,11 @@ function createRow(className, text, buttonList){
         }
         row += '"'
         if(button.eventHandler){
-            row += ' onclick="' + button.eventHandler + ';"';
+            row += ` onclick="${button.eventHandler};"`;
         }
         row += '>' + button.text + '</button>'
     });
     row += '</td>';
     return row;
 }
+ 
