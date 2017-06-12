@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/ms-signalr/jquery.signalR.js"></script>
+    <script src="../common/micc.js"></script>
+    <script src="../common/miccSignalR.js"></script>
+    <script src="agentGroupPresenceController.js"></script>
+</head>
+
+<body>
+    <div class="w3-container w3-blue">
+        <h1 class="w3-text-shadow">MiCC Agent Group Presence Demo</h1>
+    </div>
+    <div class="w3-accordion w3-card-4">
+        <button class="w3-btn-block w3-blue w3-topbar w3-border-white" onclick="toggleAccordion('login-accordian');">Show login</button>
+        <div id="login-accordian" class="w3-accordion-content w3-container">
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="miccServer" placeholder="Server address"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
+            </p>
+            <p>
+                <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
+            </p>
+        </div>
+    </div>
+    <div class="w3-panel w3-card-4">
+        <table class="w3-table-all w3-centered" id="agentGroupTable">
+            <thead>
+                <tr class="w3-blue">
+                    <th></th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Voice</th>
+                    <th>Chat</th>
+                    <th>Email</th>
+                    <th>Sms</th>
+                    <th>Open Media</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<style>
+    .individual-button {
+        margin-top: 1px;
+    }
+    .group-button {
+        height: 92px;
+    }
+</style>
+
+</html>
