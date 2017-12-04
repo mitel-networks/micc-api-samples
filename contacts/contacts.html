@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="../common/micc.js"></script>
+    <script src="contacts.js"></script>
+</head>
+
+<body>
+    <div class="w3-container w3-blue">
+        <h1 class="w3-text-shadow">MiCC Contacts Demo</h1>
+    </div>
+    <div class="w3-accordion w3-card-4">
+        <button class="w3-btn-block w3-blue w3-topbar w3-border-white" id="toggleLogin" onclick="toggleAccordion('login-accordian', this);">Show login</button>
+        <div id="login-accordian" class="w3-accordion-content w3-container">
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="miccServer" placeholder="Server address"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="text" id="username" placeholder="User name"></input>
+            </p>
+            <p>
+                <input class="w3-input w3-border w3-round" type="password" id="password" placeholder="Password"></input>
+            </p>
+            <p>
+                <button class="w3-btn-block w3-blue w3-round" onclick="login();">Login</button>
+            </p>
+        </div>
+    </div>
+    <div class="w3-panel w3-card-4 w3-row" id="contactSearch" style="visibility:hidden">
+        <div class="w3-col m4">
+            <h3>Type</h3>
+            <select id="typeSelector">
+				<option value="Any">Any</option>
+				<option value="Employee">Employee</option>
+                <option value="Queue">Queue</option>
+                <option value="ElasticContact">External (Elasticsearch Contact)</option>
+                <option value="AD">Active Directory</option>
+            </select>
+			<br><br>
+			<input class="w3-input w3-border w3-round" type="text" id="toSearch" placeholder="searched information"></input>
+			<br>
+			<button class="w3-btn-block w3-blue w3-round" id="searchBtn" onclick="searchContacts();">Search</button>
+        </div>
+    </div>
+	<div class="w3-panel w3-card-4 w3-row" id="contactAdd" style="visibility:hidden">
+        <div class="w3-col m4">
+			<input class="w3-input w3-border w3-round" type="text" id="name" placeholder="Name"></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="email" placeholder="Email"></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="phone" placeholder="Phone"></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="ext" placeholder="Ext."></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="mobilephone" placeholder="Mobile Phone"></input>
+			<br>
+			<button class="w3-btn-block w3-blue w3-round" id="addBtn" onclick="addContact();">Add</button>
+        </div>
+    </div>
+	<div class="w3-panel w3-card-4 w3-row" id="contactEdit" style="visibility:hidden">
+        <div class="w3-col m4">
+			<input class="w3-input w3-border w3-round" type="text" id="idEdit" placeholder="Id"></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="nameEdit" placeholder="Name"></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="emailEdit" placeholder="Email"></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="phoneEdit" placeholder="Phone"></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="extEdit" placeholder="Ext."></input>
+			<br>
+			<input class="w3-input w3-border w3-round" type="text" id="mobilephoneEdit" placeholder="Mobile Phone"></input>
+			<br>
+			<button class="w3-btn-block w3-blue w3-round" id="editBtn" onclick="editContact();">Edit</button>
+        </div>
+    </div>
+</body>
+
+</html>
