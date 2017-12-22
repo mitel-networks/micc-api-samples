@@ -162,6 +162,34 @@ function Micc(serverAddress) {
             });
     }
 
+	this.searchContacts = function (searched, type, response) {
+        if (!searched) {
+            console.log('Will not fetch because no searched information given.');
+        } 
+		else if (!type || type == "Any") {
+            this.getRequest(`directory?$search='${searched}'`, response);
+        }
+		else if (type == "AD") {
+            this.getRequest(`directory?$search='${searched}'&$filter=Type eq Mitel.MiccSdk.Models.DirectoryEntryType'ADGroup' or Type eq Mitel.MiccSdk.Models.DirectoryEntryType'ADUser' or Type eq Mitel.MiccSdk.Models.DirectoryEntryType'ADContact'`, response);
+        }
+		else {
+            this.getRequest(`directory?$search='${searched}'&$filter=Type eq Mitel.MiccSdk.Models.DirectoryEntryType'${type}'`, response);
+        }
+    };
+	
+	this.addContact = function (body, processResponse) {
+		this.postRequest(`directory`, body, processResponse);
+	}
+	
+	this.editContact = function (body, id, processResponse) {
+		if (!id) {
+            console.log('Will not fetch because no id given.');
+        } 
+		else {
+			this.putRequest(`directory/${id}`, body, processResponse);
+		}
+	}
+	
     this.getRequest = function (apiSubUrl, processResponse) {
         this.makeAjaxRequest(apiSubUrl, 'GET', null, processResponse);
     }
@@ -190,5 +218,5 @@ function Micc(serverAddress) {
             console.log('Received response:  ', receivedData);
             processResponse(receivedData);
         });
-    }
+    }	
 };
