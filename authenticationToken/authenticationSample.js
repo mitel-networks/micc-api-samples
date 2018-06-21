@@ -55,7 +55,7 @@ function getAuthTokenClaims() {
 function test(){
     $.ajax({
         type: 'GET',
-        url: 'https://cgoodyear.mitel.com/miccsdk/api/v1/openmedia',
+        url: 'http://localhost/miccsdk/api/v1/openmedia',
         headers: {
             Authorization: `Bearer tDEOViZ9_nn37S3jpAfkdab8SFwvxVJ9jbVgnZLVSe5tzL3ErvJXYedqXPnWSPyre1yANJX2QiWD2OzDSkojayLP6WsJZKNfF4XInp_RntRmIV68pGdvReCpvL68s-zHyXR3idB3UO4JaWJpgoXTyNMEu_nadkt2RPBtnA6zww7jLhT0y9_0V-0636qixILsafdsGHSEvmp07ZoKBRcMgbKoJBMqosXLe_i17o0z64ys29qKwYOmKrljfRAy1wGPuqWlT7m5TNfocfBqq1lEVZ_h_O2qt3CnDYu42mn2saTzg1T6jUXuyxKAklO2r5LfGsn9fWeAbFUST-OCkKwJ1vRu29ZnHLgltmHwtWtVYw7QKSGW5IGLO5dUZWCVMCFDjmeWZMvsH9pP2awTrI6dM2KaIO-6v5xhMiLfTj56kAydiCbqZv3iihH5K1CX7okV5cQKxxtKeS3ITlzdZPRZh3cZ5M4c0HuHI7gvqZ5DeZe1QWblgyKnQUsdygzGexDv9xKWSSMiINIr7ZqRY7wA3dXhBhSugX8BAA3VqlSgXhMOz_DFF_sUxy4GaIKra0fpDFHZLXeu9dgAuYcer319gorm0BnyAJHnJ8twUDVuacysq7qWRg2JXNGTp9WCI8Bdas19rw`,  //insert your client's auth token here
             'content-type': 'application/json',
