@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Mitel Networks">
+
+    <title>MiCC API Authentication Samples</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="authenticationSample.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../common/micc.js"></script>
+    <script src="authenticationSample.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+          <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">User Authentication</h5>
+                <form>
+                    <div class="form-label-group">
+                      <input class="form-control" type="text" id="enterpriseip" placeholder="Server IP" required autofocus>
+                      <label for="enterpriseip">Server IP</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input class="form-control" type="text" id="username" placeholder="Username">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input class="form-control" type="password" id="password" placeholder="Password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-label-group">
+                      <button type="button" class="btn btn-md btn-primary" onclick="getAuthToken();">Get Authentication Token</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          <div class="card" style="width: 50rem;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-3 text-muted">Auth Token</h6>
+                    <div><pre id="authToken" style="background-color: lightgrey;">&nbsp;</pre></div>
+                    <p class="card-text">Use the auth token in the standard HTTP 'Authorization' header when making any calls to the MiCCSdk API. For example:
+                        <pre style="background-color: lightgrey">&nbsp;xhr.setRequestHeader('Authorization', 'Bearer ' + 'yourauthtoken');</pre>
+                    </p>
+                    <p>
+                      Clicking the 'Get Identity Claims' button will use the token in a request to retrieve the identity claims that are associated with it. The request for claims is made to: 
+                      <pre style="background-color: lightgrey;">&nbsp;http(s)://yourserverip/authorizationserver/api/account</pre>
+                    </p>
+                    <p><button type="button" class="btn btn-md btn-primary" onclick="getAuthTokenClaims();">Get Identity Claims</button></p> 
+                    <table id="claimsTable" class="table table-sm table-bordered table-responsive table-striped" style="visibility: hidden;">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Claim</th>
+                          <th scope="col">Value</th>
+                        </tr>
+                      </thead>
+                      <tbody id="claimsTableBody"></tbody>  
+                   </table>
+              </div>
+           </div><!--end second card-->
+      </div> 
+      <br> 
+      <div class="row">
+            <div class="card" style="width: 68rem;">
+              <div class="card-body">
+                <h5 class="card-title">Client Authentication</h6>
+                 <div class="card-body">
+                    <div class="card-text">
+                      <p> The Authorization Server has a configurable list of trusted clients/services that are permitted to make requests to the MiCCSdk. 
+                        To add a new trusted server for client credentials authentication you need to first add your trusted server name and client secret 
+                        to the <b>clients.config</b> file in the <b>/authorizationserver/configuration</b> folder where you have installed MiCC.</p>
+                     </div>
+                     <div class="card-text">
+                       <p>Client authentication is done via POST request to the Authentication Server. A sample request is shown below, using a fictional client name and secret.</p>
+                          <div style="background-color: lightgrey">
+                            <pre><br>
+                              $.ajax({
+                                type: "POST",
+                                url: `${miccAuthServerPath}/token`,
+                                data: 'grant_type=client_credentials&client_id=MyAppName&client_secret=AnvDe2yIQufd9Ad...',
+                                headers: {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                }
+                                }).done(function (data) {
+                                        console.log('Login success.  Received data:  ', data);
+                                        bearerToken = data.access_token; 
+                                });<br>
+                            </pre>
+                          </div>
+                        </div> 
+                        <div class="card-text">
+                          <p>After obtaining an auth token, your app can begin to use the MiCCSdk API.  A sample request to obtain active Open Media conversations is shown below, using the client auth token:</p>
+                          <div style="background-color: lightgrey;">
+                            <pre><br>
+                                var url = `http(s)://yourenterpriseip/miccsdk/api/v1/openmedia`;
+                        
+                                $.ajax({
+                                    type: GET,
+                                    url: url,
+                                    headers: {
+                                        Authorization: `Bearer ${bearerToken}`,  //insert your client's auth token here
+                                        'content-type': 'application/json'
+                                    }
+                                }).done(function (data) {
+                                    console.log('Received response:  ', data);
+                                });
+                                <br>
+                            </pre>
+                          </div> 
+                        </div>
+                 </div>
+                 <h5 class="card-title">Client Authentication with Impersonation</h5>
+                 <div class="card-body">
+                   <div class="card-text">
+                     <p>If a trusted client/service needs to run under a certain Windows account, then you must add the "Impersonate" header to the request for a token, along with the clientId
+                       and clientSecret. Provide the Windows username of an account the service intends to use.  Adding the "Impersonate" header will allow 
+                     the trusted client/service to represent a user and their identity claims, without providing the user's password in the request.</p>
+                   </div>
+                   <div class="card-text">
+                     <p>The following example uses the same fictional clientId an clientSecret from the previous example to obtain an authentication token that will represent the Windows user's claims.</p>
+                   </div>
+                   <div style="background-color: lightgrey;">
+                      <pre><br>
+                           $.ajax({
+                            type: "POST",
+                            url: `${miccAuthServerPath}/token`,
+                            data: 'grant_type=client_credentials&client_id=MyAppName&client_secret=AnvDe2yIQufd9Ad...',
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                                "Impersonate" : 'usernameToImpersonate'
+                            }
+                            }).done(function (data) {
+                                    console.log('Login success.  Received data:  ', data);
+                                    bearerToken = data.access_token; 
+                            });
+                            <br>
+                      </pre>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
