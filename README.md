@@ -26,7 +26,7 @@ Here are the currently available samples for the MiCCSDK:
 * [Employee Inbox](https://github.com/mitel-networks/micc-api-samples/tree/master/employeeInbox): Basic demo of using signalr for listening to employee inbox updates
 * [Open Media](https://github.com/mitel-networks/micc-api-samples/tree/master/openMediaAppearIn): Basic demo of open media conversation routing through integration with [whereby.com](https://whereby.com/)
 * [Queue Conversation Control](https://github.com/mitel-networks/micc-api-samples/tree/master/queueConversationControl): Basic demo of using signalr for performing different actions on conversation in queues
-* [Queue Now Stats](https://github.com/mitel-networks/micc-api-samples/tree/master/queueNowStats)
+* [Queue Now Stats](https://github.com/mitel-networks/micc-api-samples/tree/master/queueNowStats): Basic demo of queue now statistics
 
 ## MiCC CC Messenger
 
