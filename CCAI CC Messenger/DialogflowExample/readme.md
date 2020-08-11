@@ -3,9 +3,14 @@
 This example provides a Dialogflow agent export (that can be imported using the Dialogflow console), two versions of fulfillment code and examples of how to provide different response types. 
 
 ## Importing the agent
-The agent used in this example can be found here:
-[](https://github.com/mitel-networks/micc-api-samples/blob/dialogflow-sample/CCAI%20CC%20Messenger/DialogflowExample/agent/Mitel-Sample-Agent.zip)
-Download the zip file 
+The agent used in this example can be found [here](https://github.com/mitel-networks/micc-api-samples/blob/dialogflow-sample/CCAI%20CC%20Messenger/DialogflowExample/agent/Mitel-Sample-Agent.zip)  
+
+Download the zip file and import into Dialogflow (Export and Import -> Restore from Zip)
+
+![image](./assets/export-import.png)
+
+Some settings will not be restored by the import of the agent, once the import is complete you will need to:  
+
 
 ## The mitel-welcome event
 The custom event "mitel-welcome" used at the start of every session and can be used to:
