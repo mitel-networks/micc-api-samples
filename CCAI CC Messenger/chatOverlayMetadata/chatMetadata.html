@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+var metaDataList = [];
+
+				function addToMetaDataList() {
+					var key =  document.getElementById("key");
+					var value = document.getElementById("value");
+					if (key.value !== null && value.value !== null) {
+						metaDataList.push({key: key.value, value: value.value});
+						var ul = document.getElementById("metaDataList");
+						var li = document.createElement("li");
+						li.appendChild(document.createTextNode("Key: " + key.value + "  ------  Value: " + value.value));
+						ul.appendChild(li);
+					}
+				}
+
+                function getCCMessengerMetaData() {
+					let myFirstPromise = new Promise((resolve, reject) => {
+					  resolve(metaDataList);
+					});
+					
+					return myFirstPromise;
+				}
+                
+                /* Paste your chat overlay script here */         
+				
+            
+            
+</script>
+
+<body>
+<h1>CC Messenger Chat</h1>
+
+<h3>Add External Meta Data</h3>
+<span>Key:</span>&nbsp;<input type="textbox" id="key"></input>
+<span>Value:</span>&nbsp;<input type="textbox" id="value"></input>
+<button onclick="addToMetaDataList()">Add</button>
+
+<h4>Meta Data List </h4>
+<ul id="metaDataList"></ul>
+
+</body>
+</html>

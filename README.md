@@ -18,15 +18,15 @@ If a sample appears to be misbehaving, the first place to check for problems is 
 
 Here are the currently available samples for the MiCCSDK:
 
-* [Authentication](https://github.com/mitel-networks/micc-api-samples/tree/master/authenticationToken) : Sample web page and scripts that demonstrate how to obtain an auth token from the MiCC Authorization Server, and then use the token to access MiCCSdk APIs
-* [Agent Group Presence](https://github.com/mitel-networks/micc-api-samples/tree/master/agentGroupPresence) : Basic demo of enabling/disabling all presence for agent groups
-* [Agent Presence](https://github.com/mitel-networks/micc-api-samples/tree/master/agentPresence): Basic demo of using signalr for listening to employee state updates
-* [Contacts](https://github.com/mitel-networks/micc-api-samples/tree/master/contacts): Basic demo of contact search, add and edit ***FOR MICCv9.0 AND ABOVE***
-* [Employee Dialer](https://github.com/mitel-networks/micc-api-samples/tree/master/employeeDialer): Basic demo of outbound dialing
-* [Employee Inbox](https://github.com/mitel-networks/micc-api-samples/tree/master/employeeInbox): Basic demo of using signalr for listening to employee inbox updates
-* [Open Media](https://github.com/mitel-networks/micc-api-samples/tree/master/openMediaAppearIn): Basic demo of open media conversation routing through integration with [whereby.com](https://whereby.com/)
-* [Queue Conversation Control](https://github.com/mitel-networks/micc-api-samples/tree/master/queueConversationControl): Basic demo of using signalr for performing different actions on conversation in queues
-* [Queue Now Stats](https://github.com/mitel-networks/micc-api-samples/tree/master/queueNowStats): Basic demo of queue now statistics
+* [Authentication](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/authenticationToken) : Sample web page and scripts that demonstrate how to obtain an auth token from the MiCC Authorization Server, and then use the token to access MiCCSdk APIs
+* [Agent Group Presence](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/agentGroupPresence) : Basic demo of enabling/disabling all presence for agent groups
+* [Agent Presence](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/agentPresence): Basic demo of using signalr for listening to employee state updates
+* [Contacts](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/contacts): Basic demo of contact search, add and edit ***FOR MICCv9.0 AND ABOVE***
+* [Employee Dialer](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/employeeDialer): Basic demo of outbound dialing
+* [Employee Inbox](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/employeeInbox): Basic demo of using signalr for listening to employee inbox updates
+* [Open Media](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/openMediaAppearIn): Basic demo of open media conversation routing through integration with [whereby.com](https://whereby.com/)
+* [Queue Conversation Control](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/queueConversationControl): Basic demo of using signalr for performing different actions on conversation in queues
+* [Queue Now Stats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/queueNowStats): Basic demo of queue now statistics
 
 ## MiCC CC Messenger
 
