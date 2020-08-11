@@ -1,0 +1,16 @@
+{
+  "name": "mitel-sample-agent-fulfillment",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Mitel",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "main": "fulfillment.js",
+  "scripts": {},
+  "devDependencies": {},
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}

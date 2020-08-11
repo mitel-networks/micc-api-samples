@@ -1,0 +1,10 @@
+# [START]
+runtime: nodejs10
+env_variables:
+  ACCOUNT_ID: "<ACCOUNT_ID>"
+handlers:
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+# [END]
