@@ -26,6 +26,6 @@ There are many ways to deploy the webhook service, this example provides code th
 
 ## Providing non-text respones from the Dialogflow console
 Providing non-text responses from the Dialogflow console can be done using custom payloads and a JSON payload that matches the wanted content type. 
-<a href="https://github.com/mitel-networks/micc-api-samples/wiki/Message-content-types" target="_blank">https://github.com/mitel-networks/micc-api-samples/wiki/Message-content-types</a>
+https://github.com/mitel-networks/micc-api-samples/wiki/Message-content-types
 
 ## Providing non-text respones from fulfillment
