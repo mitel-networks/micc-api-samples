@@ -34,4 +34,5 @@ Contact Center Messenger is our new chat product which allows you to use Google 
 
 * [Message content types](https://github.com/mitel-networks/micc-api-samples/wiki/Message-content-types): specification describes chat message custom content types. Message content types allow chat clients to display more than just plain text as inline chat messages, by including rich media types such as buttons, action cards, quick replies.
 * [Chat Overlay Custom Themes](https://github.com/mitel-networks/micc-api-samples/wiki/Chat-Overlay-Custom-Themes): How to customize the look and feel of your chat overlay.
+* [CC Messenger Metadata Example](https://github.com/mitel-networks/micc-api-samples/tree/master/CCAI%20CC%20Messenger/chatOverlayMetadata): Basic demo of using the CC Messenger chat overlay getCCMessengerMetaData callback function and how to push metadata into the conversation from the web page hosting the chat overlay.
 * Sample Dialog Flow Agent - ***Coming Soon***
