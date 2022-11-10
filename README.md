@@ -28,6 +28,18 @@ Here are the currently available samples for the MiCCSDK:
 * [Queue Conversation Control](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/queueConversationControl): Basic demo of using signalr for performing different actions on conversation in queues
 * [Queue Now Stats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/queueNowStats): Basic demo of queue now statistics
 
+## MiCC SQL View Sample Queries
+
+Sample sql queries are available for selected SQL views in the MiCC CCMData database.
+* [AgentEventsByPeriod](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/AgentEventStats)
+* [AgentOutboundCallDetail](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/AgentOutboundCallDetail)
+* [AgentPerformanceByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/AgentPerformanceByPeriodStats)
+* [CallAccountingTraceExtentionStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/CallAccountingTraceExtensionStats)
+* [CallAccountingTraceTrunkStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/CallAccountingTraceTrunkStats)
+* [QueuePerformanceByDNISStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/QueuePerformanceByDNISStats)
+* [QueuePerformanceByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/QueuePerformanceByPeriodStats)
+* [QueueSpectrumByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSDK/MiCCSqlViewSampleQueries/QueueSpectrumByPeriodStats)
+
 ## MiCC CC Messenger
 
 Contact Center Messenger is our new chat product which allows you to use Google Contact Center AI-powered Chatbots that converse naturally with customers and agent assist technology that listens to the conversation and delivers suggested articles to human agents in real-time.
