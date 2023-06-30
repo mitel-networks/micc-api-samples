@@ -40,14 +40,6 @@ Sample sql queries are available for selected SQL views in the MiCC CCMData data
 * [QueuePerformanceByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueuePerformanceByPeriodStats)
 * [QueueSpectrumByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueueSpectrumByPeriodStats)
 
-## MiCC Sample Queries Configuration, Consolidated Reporting, Conversation Summary, and IVR Routing
-
-Sample sql queries are available for selected SQL views in the MiCC CCMData database.
-* [Configuration](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCDataAnalytics/Configuration)
-* [ConsolidatedReporting](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCDataAnalytics/ConsolidatedReporting)
-* [ConversationSummary](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCDataAnalytics/ConversationSummary)
-* [IVRRouting](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCDataAnalytics/IVRRouting)
-
 ## MiCC CC Messenger
 
 Contact Center Messenger is our new chat product which allows you to use Google Contact Center AI-powered Chatbots that converse naturally with customers and agent assist technology that listens to the conversation and delivers suggested articles to human agents in real-time.
