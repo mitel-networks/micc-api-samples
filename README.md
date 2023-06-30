@@ -31,14 +31,14 @@ Here are the currently available samples for the MiCCSDK:
 ## MiCC SQL View Sample Queries
 
 Sample sql queries are available for selected SQL views in the MiCC CCMData database.
-* [AgentEventsByPeriod](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/AgentEventStats)
-* [AgentOutboundCallDetail](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/AgentOutboundCallDetail)
-* [AgentPerformanceByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/AgentPerformanceByPeriodStats)
-* [CallAccountingTraceExtentionStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/CallAccountingTraceExtensionStats)
-* [CallAccountingTraceTrunkStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/CallAccountingTraceTrunkStats)
-* [QueuePerformanceByDNISStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueuePerformanceByDNISStats)
-* [QueuePerformanceByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueuePerformanceByPeriodStats)
-* [QueueSpectrumByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueueSpectrumByPeriodStats)
+* [AgentEventsByPeriod](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/AgentEventStats) : Sample Agent and Agent Group Event SQL views
+* [AgentOutboundCallDetail](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/AgentOutboundCallDetail) : Sample Agent Outbound Trace SQL views
+* [AgentPerformanceByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/AgentPerformanceByPeriodStats) : Sample Agent, Agent Group and Employee Group Performance SQL views
+* [CallAccountingTraceExtentionStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/CallAccountingTraceExtensionStats) : Sample Business Reporter (Call Accounting) Extension SQL views
+* [CallAccountingTraceTrunkStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/CallAccountingTraceTrunkStats) : Sample Business Reporter (Call Accounting) Trunk SQL views
+* [QueuePerformanceByDNISStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueuePerformanceByDNISStats) : Sample Queue and Queue Group Performance by DNIS SQL views
+* [QueuePerformanceByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueuePerformanceByPeriodStats): Sample Queue and Queue Group Performance by Period SQL views
+* [QueueSpectrumByPeriodStats](https://github.com/mitel-networks/micc-api-samples/tree/master/MiCCSqlViewSampleQueries/QueueSpectrumByPeriodStats) : Sample Queue and Queue Group Spectrum SQL views
 
 ## MiCC CC Messenger
 
