@@ -4,7 +4,7 @@ This repository contains Power BI templates for devices types connected to Voice
 ## Queue Groups
 
 ### QueueGroupReportDashboard
-Requires MiCC-B 10.0.0.0
+**Requires MiCC-B 10.0.0.0**
 
 * This template contains statistics for Queue Groups and Queues. The visualizations contained in this report dashboard represents call counts, service levels, time metrics and call details.
 
@@ -13,16 +13,16 @@ The storage mode for this report dashboard is Import
 
 
 ### QueueGroupReportDashboard_V2
-Requires MiCC-B 10.1.0.0
+**Required MiCC-B 10.1.0.0**
 
-* * This template contains the same statistics as the QueueGroupReportDashboard. The difference between the two is the Storage mode. 
+* This template contains the same statistics as the QueueGroupReportDashboard. The difference between the two is the Storage mode. 
 
 The storage mode for this report dashboard is Direct
 
 NOTE: It is not possible in Power BI to go from Import to Direct Storage Mode easily. To convert, the Data Model has to be deleted and recreated.  The Data Model contains many custom measure specific to contact centers. All Power BI templates moving forward will be created using a Direct storage mode in order to preserve custom measure in the event a customer needs to adhere to a specific Storage Mode as per their organizations requirements.
 
 ### AgentGroupReportDashboard
-Requires MiCC-B 10.1.0.0
+**Requires MiCC-B 10.1.0.0**
 
 * This template contains statistics for Agent Groups and Agents. The visualizations contained in this report dashboard represent a mix of agent event behavior and call based statistics. Each tab in the report contains a textbox explaining how the data is derived and if possible indicates a comparable report in standard MiCC-B reports.
 
