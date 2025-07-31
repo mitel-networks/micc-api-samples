@@ -1,5 +1,6 @@
 # IVR
 This repository contains Power BI templates for IVR entities including hunt groups/media servers, ports/end points, workflow and workflow conditions.
+Note: Files updated July 31, 2025 to support IVR Ports that contain * and # in the reporting value
 
 ## IVRReportDashboard
 * This Power BI Template is a report dashboard with a series of tabs represents IVR data for workflows, conditions and subroutines. This data is derived from standard MiCC-B IVR port and workflow data. This report also support configurations with SIP as the voice media server.

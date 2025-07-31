@@ -22,6 +22,37 @@ NOTE: It is not possible in Power BI to go from Import to Direct Storage Mode ea
 
 The storage mode for this report dashboard is Direct
 
+### SIPQueueReportDashboard_V1
+* This template represents the reporting data for SIP Queues. Each tab contains a series of visualizations representing standard call center statistics. 
+Each of the tabs in the report is also available as a standalone template
+
+#### SIPQueue_KPIReportDashboard_V1
+* This template represents the Queue KPIs tab of the SIPQueueReportDashboard_V1
+
+#### SIPQueue_PerformanceReportDashboard_V1
+* This template represents the Queue Performance tab of the SIPQueueReportDashboard_V1
+
+#### SIPQueue_DetailsReportDashboard_V1
+* This template represents the Queue Details tab of the SIPQueueReportDashboard_V1
+
+#### SIPQueue_CDRReportDashboard_V1
+* This template represents the Conversation Summary tab of the SIPQueueReportDashboard_V1
+
+### SIPAgentReportDashboard_V1
+* This template represents the reporting tab of the SIP Agents. Each tab contains a series of visualizations representing standard call center statistics. 
+Each of the tabs in the report is also available as a standalone template
+
+#### SIPAgent_KPIReportDashboard_V1
+* This template represents the KPIs tab of the SIPAgentReportDashboard_V1
+
+#### SIPAgent_PerformanceReportDashboard_V1
+* This template represents the Employee Summary and Account/Class Codes tabs of the SIPAgentReportDashboard_V1
+
+#### SIPAgent_ShiftsReportDashboard_V1
+* This template represents the Employee Shifts tab of the SIPAgentReportDashboard_V1
+
+#### SIPAgent_CDRReportDashboard_V1
+* This template represents the Conversation Summary tab of the SIPAgentReportDashboard_V1
 
 ### Collect the Database information
 Before you can use the template in your environment you need to collect some information about the MiCC-B Server.
