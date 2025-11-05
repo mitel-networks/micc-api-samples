@@ -1,9 +1,9 @@
 # Voice	
 This repository contains Power BI templates for devices types connected to Voice media servers.
 
-## Queue Groups available in MiCC-B v 10.0
+## Queue Groups 
 
-### QueueGroupReportDashboard
+### QueueGroupReportDashboard available in MiCC-B v 10.0
 
 * This template contains statistics for Queue Groups and Queues. The visualizations contained in this report dashboard represents call counts, service levels, time metrics and call details.
 
@@ -26,7 +26,7 @@ The storage mode for this report dashboard is Direct.
 
 The SQL Views required to support these templates are available in MiCC-B v 10.1 and higher.
 
-### SIPQueueReportDashboard_V1 available in MCX 1.0 (MICC-B v11.0) 
+### SIPQueueReportDashboard_V1 available in MCX v 1.0 (MICC-B v11.0) 
 * This template represents the reporting data for SIP Queues. Each tab contains a series of visualizations representing standard call center statistics. 
 Each of the tabs in the report is also available as a standalone template.
 
