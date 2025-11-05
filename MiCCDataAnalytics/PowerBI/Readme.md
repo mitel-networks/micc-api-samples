@@ -13,6 +13,14 @@ Interested parties must be:
 * have activated a Power BI account with which they can logged in to Power BI
 * have access to the Sql Server instance for MiCC-B
 
+The templates have been released in the following order:
+* MiVB Queue Group - MiCC-B v 10.0
+* MiVB Agent Group -  MiCC-B v 10.1
+* Multimedia Queue and Agent - MiCC-B v 10.2
+* IVR/Callflow - MiCC-B v 10.2
+* Configuration - MiCC-B v B10.2
+* SIP Queue and Agent - MCX 1.0 (MICC-B v11.0) 
+
 ## Power BI
 If you are not yet familiar with Power BI, information and tutorials can be found online. Please consult the Power BI [site](https://powerbi.microsoft.com/en-us/)
  website for information and training tools

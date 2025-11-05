@@ -1,6 +1,7 @@
-# Multimedia
+# Multimedia available in MiCC-B v 10.2
 This repository contains Power BI templates for the queues and agents of multimedia media servers.
 
+The SQL Views required to support these templates are available in MiCC-B v 10.2 and higher.
 
 ## Queue
 
