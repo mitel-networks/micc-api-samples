@@ -5,6 +5,7 @@ This repository contains Power BI templates providing a read-only view of config
 * This template is a read-only view of MiContact Center Business configuration. It includes a subset of information for the devices as you would see in YourSite Explorer. The goal of this template is to help demystify the relationships between devices without the overhead of the YourSite Explorer application. 
 
 The storage mode for this report dashboard is Direct
+
 The SQL Views required to support these templates are available in MiCC-B v 10.2 and higher.
 
 ## Configuration_IVR_TechPreview
