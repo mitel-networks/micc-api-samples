@@ -1,13 +1,15 @@
 # Voice	
 This repository contains Power BI templates for devices types connected to Voice media servers.
 
-## Queue Groups
+## Queue Groups available in MiCC-B v 10.0
 
 ### QueueGroupReportDashboard
 
 * This template contains statistics for Queue Groups and Queues. The visualizations contained in this report dashboard represents call counts, service levels, time metrics and call details.
 
-The storage mode for this report dashboard is Import
+The storage mode for this report dashboard is Import.
+
+The SQL Views required to support these templates are available in MiCC-B v 10.0 and higher.
 
 ### QueueGroupReportDashboard_V2
 * This template contains the same statistics as the QueueGroupReportDashboard. The difference between the two is the Storage mode. 
@@ -17,42 +19,65 @@ The storage mode for this report dashboard is Direct
 
 NOTE: It is not possible in Power BI to go from Import to Direct Storage Mode easily. To convert, the Data Model has to be deleted and recreated.  The Data Model contains many custom measure specific to contact centers. All Power BI templates moving forward will be created using a Direct storage mode in order to preserve custom measure in the event a customer needs to adhere to a specific Storage Mode as per their organizations requirements.
 
-### AgentGroupReportDashboard
+### AgentGroupReportDashboard available in MiCC-B v 10.1
 * This template contains statistics for Agent Groups and Agents. The visualizations contained in this report dashboard represent a mix of agent event behavior and call based statistics. Each tab in the report contains a textbox explaining how the data is derived and if possible indicates a comparable report in standard MiCC-B reports.
 
-The storage mode for this report dashboard is Direct
+The storage mode for this report dashboard is Direct.
 
-### SIPQueueReportDashboard_V1
+The SQL Views required to support these templates are available in MiCC-B v 10.1 and higher.
+
+### SIPQueueReportDashboard_V1 available in MCX 1.0 (MICC-B v11.0) 
 * This template represents the reporting data for SIP Queues. Each tab contains a series of visualizations representing standard call center statistics. 
-Each of the tabs in the report is also available as a standalone template
+Each of the tabs in the report is also available as a standalone template.
+
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
 
 #### SIPQueue_KPIReportDashboard_V1
 * This template represents the Queue KPIs tab of the SIPQueueReportDashboard_V1
 
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
+
 #### SIPQueue_PerformanceReportDashboard_V1
 * This template represents the Queue Performance tab of the SIPQueueReportDashboard_V1
+
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
 
 #### SIPQueue_DetailsReportDashboard_V1
 * This template represents the Queue Details tab of the SIPQueueReportDashboard_V1
 
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
+
 #### SIPQueue_CDRReportDashboard_V1
 * This template represents the Conversation Summary tab of the SIPQueueReportDashboard_V1
 
-### SIPAgentReportDashboard_V1
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
+
+### SIPAgentReportDashboard_V1 available in MCX 1.0 (MICC-B v11.0) 
 * This template represents the reporting tab of the SIP Agents. Each tab contains a series of visualizations representing standard call center statistics. 
+
 Each of the tabs in the report is also available as a standalone template
+
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
 
 #### SIPAgent_KPIReportDashboard_V1
 * This template represents the KPIs tab of the SIPAgentReportDashboard_V1
 
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
+
 #### SIPAgent_PerformanceReportDashboard_V1
 * This template represents the Employee Summary and Account/Class Codes tabs of the SIPAgentReportDashboard_V1
+
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
 
 #### SIPAgent_ShiftsReportDashboard_V1
 * This template represents the Employee Shifts tab of the SIPAgentReportDashboard_V1
 
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
+
 #### SIPAgent_CDRReportDashboard_V1
 * This template represents the Conversation Summary tab of the SIPAgentReportDashboard_V1
+
+The SQL Views required to support these templates are available in MCX 1.0 (MICC-B v11.0) and higher.
 
 ### Collect the Database information
 Before you can use the template in your environment you need to collect some information about the MiCC-B Server.
